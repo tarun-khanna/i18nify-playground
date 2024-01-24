@@ -23,7 +23,7 @@ export default function NumberView() {
         </Grid>
         <Grid item xs={12} sx={{ mb: 3 }}>
           <Typography variant="h3" sx={{ mb: 1 }}>
-            Modules
+            APIs
           </Typography>
           <Box>
             <Link
