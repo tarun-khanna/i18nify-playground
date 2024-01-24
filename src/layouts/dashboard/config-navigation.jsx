@@ -27,6 +27,11 @@ const navConfig = [
     path: '/date',
     icon: icon('ic_date'),
   },
+  {
+    title: 'Plugins',
+    path: '/plugins',
+    icon: icon('ic_plugin'),
+  },
 ];
 
 export default navConfig;

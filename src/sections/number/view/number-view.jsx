@@ -40,7 +40,7 @@ export default function NumberView() {
               color="#4767FD"
               component="button"
               underline="none"
-              onClick={() => navigate('/phone')}
+              onClick={() => navigate('/number/formatNumberByParts')}
             >
               FormatNumberByParts
             </Link>
@@ -50,9 +50,19 @@ export default function NumberView() {
               color="#4767FD"
               component="button"
               underline="none"
-              onClick={() => navigate('/date')}
+              onClick={() => navigate('/number/getCurrencyList')}
             >
               GetCurrencyList
+            </Link>
+          </Box>
+          <Box>
+            <Link
+              color="#4767FD"
+              component="button"
+              underline="none"
+              onClick={() => navigate('/number/getCurrencySymbol')}
+            >
+              GetCurrencySymbol
             </Link>
           </Box>
         </Grid>

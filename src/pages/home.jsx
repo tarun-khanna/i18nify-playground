@@ -64,7 +64,7 @@ const Home = () => {
             Plugins
           </Typography>
           <Box>
-            <Link component="button" underline="none" onClick={() => navigate('/date')}>
+            <Link component="button" underline="none" onClick={() => navigate('/plugins')}>
               i18nify-react
             </Link>
           </Box>
