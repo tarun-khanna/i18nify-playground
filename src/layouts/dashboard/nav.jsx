@@ -47,12 +47,10 @@ export default function Nav({ openNav, onCloseNav }) {
       href="https://razorpay.com"
       target="_blank"
     >
-      <SvgColor
+      <img
         src="/i18nify-playground/assets/rzp.svg"
-        sx={{
-          width: '200px',
-          height: '35px',
-        }}
+        height='35px'
+        alt="Razorpay"
       />
     </Link>
   );
