@@ -8,6 +8,7 @@ import FormatNumber from 'src/pages/number/formatNumber';
 import FormatNumberByParts from 'src/pages/number/formatNumberByParts';
 
 import DashboardLayout from 'src/layouts/dashboard';
+import GetCurrencySymbol from 'src/pages/number/getCurrencySymbol';
 
 // ----------------------------------------------------------------------
 
@@ -38,7 +39,7 @@ export default function Router() {
         },
         {
           path: 'number/getCurrencySymbol',
-          element: <Box />,
+          element: <GetCurrencySymbol />,
         },
         {
           path: 'number',
