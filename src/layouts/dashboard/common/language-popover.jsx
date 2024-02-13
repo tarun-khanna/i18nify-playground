@@ -1,11 +1,11 @@
 import Box from '@mui/material/Box';
 import MenuItem from '@mui/material/MenuItem';
 import { LANGS } from 'src/constants/locale';
-import { useLocaleContext } from 'src/context/localeContext';
 import { Select } from '@mui/material';
+import { useI18nContext } from '@razorpay/i18nify-react';
 
 export default function LanguagePopover() {
-  const { locale, setLocale } = useLocaleContext();
+  const { setI18nState, i18nState } = useI18nContext();
 
   return (
     <Select
@@ -20,9 +20,9 @@ export default function LanguagePopover() {
           width: 180,
         },
       }}
-      value={locale}
+      value={i18nState.locale}
       onChange={(ev) => {
-        setLocale(ev.target.value);
+        setI18nState({ locale: ev.target.value });
       }}
     >
       {LANGS.map((option) => (
