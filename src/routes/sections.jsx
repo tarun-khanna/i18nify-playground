@@ -5,6 +5,8 @@ import { Box } from '@mui/material';
 import Home from 'src/pages/home';
 import NumberPage from 'src/pages/number';
 import FormatNumber from 'src/pages/formatNumber';
+import FormatNumberByParts from 'src/pages/formatNumberByParts';
+
 import DashboardLayout from 'src/layouts/dashboard';
 
 // ----------------------------------------------------------------------
@@ -28,7 +30,7 @@ export default function Router() {
         },
         {
           path: 'number/formatNumberByParts',
-          element: <Box />,
+          element: <FormatNumberByParts />,
         },
         {
           path: 'number/getCurrencyList',
