@@ -4,6 +4,7 @@ import { Box } from '@mui/material';
 
 import Home from 'src/pages/home';
 import NumberPage from 'src/pages/number';
+import PhoneNumber from 'src/pages/phoneNumber';
 import FormatNumber from 'src/pages/formatNumber';
 import DashboardLayout from 'src/layouts/dashboard';
 
@@ -42,7 +43,7 @@ export default function Router() {
           path: 'number',
           element: <NumberPage />,
         },
-        { path: 'phone', element: <Box /> },
+        { path: 'phone', element: <PhoneNumber /> },
         { path: 'date', element: <Box /> },
         { path: 'state', element: <Box /> },
         { path: 'plugins', element: <Box /> },
