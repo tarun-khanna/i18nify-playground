@@ -14,7 +14,6 @@ import { RouterLink } from 'src/routes/components';
 
 import { useResponsive } from 'src/hooks/use-responsive';
 
-import SvgColor from 'src/components/svg-color';
 import Scrollbar from 'src/components/scrollbar';
 
 import { NAV } from './config-layout';
