@@ -7,6 +7,7 @@ import NumberPage from 'src/pages/number';
 import PhoneNumber from 'src/pages/phoneNumber';
 import FormatNumber from 'src/pages/formatNumber';
 import DashboardLayout from 'src/layouts/dashboard';
+import IsValidPhoneNumberView from 'src/pages/isValidPhoneNumber';
 
 // ----------------------------------------------------------------------
 
@@ -44,7 +45,7 @@ export default function Router() {
           element: <NumberPage />,
         },
         { path: 'phone', element: <PhoneNumber /> },
-        { path: 'phone/isValidPhoneNumber', element: <PhoneNumber /> },
+        { path: 'phone/isValidPhoneNumber', element: <IsValidPhoneNumberView /> },
         { path: 'phone/formatPhoneNumber', element: <PhoneNumber /> },
         { path: 'phone/parsePhoneNumber', element: <PhoneNumber /> },
         { path: 'date', element: <Box /> },
