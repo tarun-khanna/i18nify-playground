@@ -41,14 +41,14 @@ export default function Header({ onOpenNav }) {
       <Stack direction="row" alignItems="center" spacing={2}>
         <SvgColor
           onClick={() => navigateToExternal('https://github.com/razorpay/i18nify/')}
-          src="/assets/icons/ic_github.svg"
+          src="/i18nify-playground/assets/icons/ic_github.svg"
           sx={{ width: 30, height: 30, background: '#6b6b6b', cursor: 'pointer' }}
         />
         <img
           onClick={() => {
             navigateToExternal('https://www.npmjs.com/package/@razorpay/i18nify-js');
           }}
-          src="/assets/icons/ic_npm.svg"
+          src="/i18nify-playground/assets/icons/ic_npm.svg"
           style={{ height: 25, background: '#CC3534', cursor: 'pointer' }}
         />
 

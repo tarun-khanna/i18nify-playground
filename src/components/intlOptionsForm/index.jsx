@@ -1,11 +1,23 @@
-import React, { useMemo, useState } from 'react';
+import React from 'react';
 
-import { Box, Select, MenuItem, OutlinedInput, Typography, Grid, Button } from '@mui/material';
+import {
+  Box,
+  Select,
+  MenuItem,
+  OutlinedInput,
+  Typography,
+  Grid,
+  Button,
+  useTheme,
+  useMediaQuery,
+} from '@mui/material';
 import { NUMBER_FORMAT_INTL_INPUTS } from 'src/constants/number';
 import { useIntlOptionsContext } from 'src/context/intlOptionsContext';
 
 const IntlOptionsForm = () => {
   const { intlOptions, setIntlOptions } = useIntlOptionsContext();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const handleInputChange = (key, value) => {
     setIntlOptions((prevState) => {
@@ -21,10 +33,10 @@ const IntlOptionsForm = () => {
     if (input.type === 'select') {
       return (
         <Grid container key={input.key} alignItems="center" spacing={1}>
-          <Grid item xs={4}>
+          <Grid item xs={isMobile ? 5 : 4}>
             <Typography variant="body1">{input.label}</Typography>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={isMobile ? 7 : 6}>
             <Select
               fullWidth
               size="small"
@@ -44,10 +56,10 @@ const IntlOptionsForm = () => {
     }
     return (
       <Grid container key={input.key} alignItems="center">
-        <Grid item xs={4}>
+        <Grid item xs={isMobile ? 5 : 4}>
           <Typography variant="body1">{input.label}</Typography>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={isMobile ? 7 : 6}>
           <OutlinedInput
             type={input.type}
             fullWidth

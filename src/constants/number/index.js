@@ -3,7 +3,7 @@ export const NUMBER_FORMAT_INTL_INPUTS = [
     key: 'style',
     label: 'Number Style',
     type: 'select',
-    options: ['decimal', 'currency', 'percent'],
+    options: ['decimal', 'percent'],
   },
   {
     key: 'notation',
@@ -27,7 +27,7 @@ export const NUMBER_FORMAT_INTL_INPUTS = [
     key: 'trailingZeroDisplay',
     label: 'Trailing zero display',
     type: 'select',
-    options: ['auto', 'trailingZeroDisplay'],
+    options: ['auto', 'stripIfInteger'],
   },
   {
     key: 'maximumFractionDigits',

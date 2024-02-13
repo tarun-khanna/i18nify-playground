@@ -57,15 +57,36 @@ const Home = () => {
               Date module
             </Link>
           </Box>
+          <Box>
+            <Link
+              color="#4767FD"
+              component="button"
+              underline="none"
+              onClick={() => navigate('/state')}
+            >
+              Core State module
+            </Link>
+          </Box>
         </Grid>
 
-        <Grid item xs={12}>
+        <Grid item xs={12} sx={{ mb: 3 }}>
           <Typography variant="h3" sx={{ mb: 1 }}>
             Plugins
           </Typography>
           <Box>
             <Link component="button" underline="none" onClick={() => navigate('/plugins')}>
               i18nify-react
+            </Link>
+          </Box>
+        </Grid>
+
+        <Grid item xs={12} sx={{ mb: 3 }}>
+          <Typography variant="h3" sx={{ mb: 1 }}>
+            Polyfills
+          </Typography>
+          <Box>
+            <Link component="button" underline="none" onClick={() => navigate('/plugins')}>
+              FormatNumberByParts
             </Link>
           </Box>
         </Grid>

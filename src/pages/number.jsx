@@ -8,7 +8,7 @@ export default function NumberPage() {
   return (
     <>
       <Helmet>
-        <title> Dashboard | Minimal UI </title>
+        <title> i18nify | Number </title>
       </Helmet>
 
       <NumberView />

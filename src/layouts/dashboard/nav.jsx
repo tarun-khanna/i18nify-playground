@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router';
 
@@ -18,6 +18,7 @@ import Scrollbar from 'src/components/scrollbar';
 
 import { NAV } from './config-layout';
 import navConfig from './config-navigation';
+import { Collapse, List } from '@mui/material';
 
 // ----------------------------------------------------------------------
 
@@ -51,7 +52,7 @@ export default function Nav({ openNav, onCloseNav }) {
         navigate('/');
       }}
     >
-      <Typography variant="h5">@razorpay/i18nify</Typography>
+      <Typography variant="h5">@razorpay/i18nify-js</Typography>
     </Box>
   );
 
@@ -126,36 +127,50 @@ Nav.propTypes = {
 
 function NavItem({ item }) {
   const pathname = usePathname();
+  const [open, setOpen] = useState(false);
 
-  const active = item.path === '/' ? pathname === item.path : pathname.includes(item.path);
+  const active = item.path === pathname;
 
   return (
-    <ListItemButton
-      component={RouterLink}
-      href={item.path}
-      sx={{
-        minHeight: 44,
-        borderRadius: 0.75,
-        typography: 'body2',
-        color: 'text.secondary',
-        textTransform: 'capitalize',
-        fontWeight: 'fontWeightMedium',
-        ...(active && {
-          color: 'primary.main',
-          fontWeight: 'fontWeightSemiBold',
-          bgcolor: (theme) => alpha(theme.palette.primary.main, 0.08),
-          '&:hover': {
-            bgcolor: (theme) => alpha(theme.palette.primary.main, 0.16),
-          },
-        }),
-      }}
-    >
-      <Box component="span" sx={{ width: 24, height: 24, mr: 2 }}>
-        {item.icon}
+    <>
+      <ListItemButton
+        onClick={() => setOpen(!open)}
+        component={RouterLink}
+        href={item.path}
+        sx={{
+          minHeight: 44,
+          borderRadius: 0.75,
+          typography: 'body2',
+          color: 'text.secondary',
+          textTransform: 'capitalize',
+          fontWeight: 'fontWeightMedium',
+          ...(active && {
+            color: 'primary.main',
+            fontWeight: 'fontWeightSemiBold',
+            bgcolor: (theme) => alpha(theme.palette.primary.main, 0.08),
+            '&:hover': {
+              bgcolor: (theme) => alpha(theme.palette.primary.main, 0.16),
+            },
+          }),
+        }}
+      >
+        <Box component="span" sx={{ width: 24, height: 24, mr: 2 }}>
+          {item.icon}
+        </Box>
+        <Box component="span">{item.title} </Box>
+      </ListItemButton>
+      <Box>
+        {item.children?.length &&
+          open &&
+          item.children.map((child) => (
+            <Collapse in={open} timeout="auto" unmountOnExit>
+              <List component="div" disablePadding>
+                <NavItem item={child} key={child.title} />
+              </List>
+            </Collapse>
+          ))}
       </Box>
-
-      <Box component="span">{item.title} </Box>
-    </ListItemButton>
+    </>
   );
 }
 

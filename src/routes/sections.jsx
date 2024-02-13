@@ -1,12 +1,11 @@
-import { Box } from '@mui/material';
-import { lazy, Suspense } from 'react';
 import { Outlet, useRoutes } from 'react-router-dom';
 
-import DashboardLayout from 'src/layouts/dashboard';
+import { Box } from '@mui/material';
 
-export const NumberPage = lazy(() => import('src/pages/number'));
-export const FormatNumberPage = lazy(() => import('src/pages/formatNumber'));
-export const HomePage = lazy(() => import('src/pages/home'));
+import Home from 'src/pages/home';
+import NumberPage from 'src/pages/number';
+import FormatNumber from 'src/pages/formatNumber';
+import DashboardLayout from 'src/layouts/dashboard';
 
 // ----------------------------------------------------------------------
 
@@ -15,19 +14,17 @@ export default function Router() {
     {
       element: (
         <DashboardLayout>
-          <Suspense>
-            <Outlet />
-          </Suspense>
+          <Outlet />
         </DashboardLayout>
       ),
       children: [
         {
-          element: <HomePage />,
+          element: <Home />,
           index: true,
         },
         {
           path: 'number/formatNumber',
-          element: <FormatNumberPage />,
+          element: <FormatNumber />,
         },
         {
           path: 'number/formatNumberByParts',
@@ -47,6 +44,7 @@ export default function Router() {
         },
         { path: 'phone', element: <Box /> },
         { path: 'date', element: <Box /> },
+        { path: 'state', element: <Box /> },
         { path: 'plugins', element: <Box /> },
       ],
     },

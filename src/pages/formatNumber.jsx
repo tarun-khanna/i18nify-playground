@@ -1,12 +1,10 @@
 import { useState } from 'react';
 import { formatNumber } from '@razorpay/i18nify-js';
-import { Link as RouterLink } from 'react-router-dom';
 
 import Container from '@mui/material/Container';
-import { Grid, Typography } from '@mui/material';
+import { Grid, Typography, useMediaQuery, useTheme } from '@mui/material';
 
 import { removeEmptyValues } from 'src/utils';
-import { useLocaleContext } from 'src/context/localeContext';
 import { useIntlOptionsContext } from 'src/context/intlOptionsContext';
 import NumberForm from 'src/sections/number/number-form';
 
@@ -16,12 +14,13 @@ export default function NumberView() {
   const [currency, setCurrency] = useState('');
   const [inpValue, setInpValue] = useState('');
   const { intlOptions } = useIntlOptionsContext();
-  const { locale } = useLocaleContext();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
     <Container maxWidth="xl">
       <Grid container>
-        <Grid item xs={7} sx={{ 'border-right': '1px solid rgba(0,0,0,0.2)', pr: 2 }}>
+        <Grid item xs={isMobile ? 12 : 7}>
           <Typography color="#4767FD" variant="h2" sx={{ mb: 2 }}>
             FormatNumber
           </Typography>
@@ -31,7 +30,26 @@ export default function NumberView() {
             And guess what? It uses the Internationalization API (Intl) to sprinkle that magic dust
             and give you snazzy, locale-specific number formats—especially for currencies! 🌟💸
           </Typography>
-
+        </Grid>
+        {isMobile && (
+          <Grid item xs={12}>
+            <Grid sx={{ height: '100px' }} container alignItems="center" justifyContent="center">
+              <Grid item>
+                <Typography variant="h2">
+                  {formatNumber(inpValue, {
+                    currency,
+                    intlOptions: removeEmptyValues(intlOptions),
+                  })}
+                </Typography>
+              </Grid>
+            </Grid>
+          </Grid>
+        )}
+        <Grid
+          item
+          xs={isMobile ? 12 : 7}
+          sx={!isMobile && { 'border-right': '1px solid rgba(0,0,0,0.2)', pr: 2 }}
+        >
           <NumberForm
             inpValue={inpValue}
             currency={currency}
@@ -39,19 +57,20 @@ export default function NumberView() {
             onInpChange={(val) => setInpValue(val)}
           />
         </Grid>
-        <Grid item xs={5}>
-          <Grid sx={{ height: '100vh' }} container alignItems="center" justifyContent="center">
-            <Grid item>
-              <Typography variant="h2">
-                {formatNumber(inpValue, {
-                  locale,
-                  currency,
-                  intlOptions: removeEmptyValues(intlOptions),
-                })}
-              </Typography>
+        {!isMobile && (
+          <Grid item xs={5}>
+            <Grid sx={{ height: '60vh' }} container alignItems="center" justifyContent="center">
+              <Grid item>
+                <Typography variant="h2">
+                  {formatNumber(inpValue, {
+                    currency,
+                    intlOptions: removeEmptyValues(intlOptions),
+                  })}
+                </Typography>
+              </Grid>
             </Grid>
           </Grid>
-        </Grid>
+        )}
       </Grid>
     </Container>
   );
