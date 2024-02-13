@@ -9,6 +9,7 @@ import FormatNumberByParts from 'src/pages/number/formatNumberByParts';
 
 import DashboardLayout from 'src/layouts/dashboard';
 import GetCurrencySymbol from 'src/pages/number/getCurrencySymbol';
+import GetCurrencyList from 'src/pages/number/getCurrencyList';
 
 // ----------------------------------------------------------------------
 
@@ -35,7 +36,7 @@ export default function Router() {
         },
         {
           path: 'number/getCurrencyList',
-          element: <Box />,
+          element: <GetCurrencyList />,
         },
         {
           path: 'number/getCurrencySymbol',
