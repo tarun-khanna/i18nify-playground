@@ -1,12 +1,12 @@
-import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { useState, useEffect } from 'react';
 
 import Box from '@mui/material/Box';
+import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import Drawer from '@mui/material/Drawer';
-import Link from '@mui/material/Link';
 import { alpha } from '@mui/material/styles';
-import Typography from '@mui/material/Typography';
+import { List, Collapse } from '@mui/material';
 import ListItemButton from '@mui/material/ListItemButton';
 
 import { usePathname } from 'src/routes/hooks';
@@ -18,7 +18,6 @@ import Scrollbar from 'src/components/scrollbar';
 
 import { NAV } from './config-layout';
 import navConfig from './config-navigation';
-import { Collapse, List } from '@mui/material';
 
 // ----------------------------------------------------------------------
 
