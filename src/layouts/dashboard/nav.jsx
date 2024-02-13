@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { useNavigate } from 'react-router';
 
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Drawer from '@mui/material/Drawer';
+import Link from '@mui/material/Link';
 import { alpha } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -23,7 +23,6 @@ import navConfig from './config-navigation';
 
 export default function Nav({ openNav, onCloseNav }) {
   const pathname = usePathname();
-  const navigate = useNavigate();
 
   const upLg = useResponsive('up', 'lg');
 
@@ -35,7 +34,7 @@ export default function Nav({ openNav, onCloseNav }) {
   }, [pathname]);
 
   const renderBadge = (
-    <Box
+    <Link
       sx={{
         my: 3,
         mx: 2.5,
@@ -47,12 +46,11 @@ export default function Nav({ openNav, onCloseNav }) {
         bgcolor: (theme) => alpha(theme.palette.grey[500], 0.12),
         cursor: 'pointer',
       }}
-      onClick={() => {
-        navigate('/');
-      }}
+      href="https://razorpay.com"
+      target="_blank"
     >
-      <Typography variant="h5">@razorpay/i18nify</Typography>
-    </Box>
+      <img alt="razorpay" src="/assets/rzp.svg" />
+    </Link>
   );
 
   const renderMenu = (
