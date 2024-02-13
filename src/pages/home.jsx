@@ -34,7 +34,7 @@ const Home = () => {
               underline="none"
               onClick={() => navigate('/number')}
             >
-              Number module
+              Number
             </Link>
           </Box>
           <Box>
@@ -44,7 +44,7 @@ const Home = () => {
               underline="none"
               onClick={() => navigate('/phone')}
             >
-              Phone number module
+              Phone Number
             </Link>
           </Box>
           <Box>
@@ -54,7 +54,7 @@ const Home = () => {
               underline="none"
               onClick={() => navigate('/date')}
             >
-              Date module
+              Date
             </Link>
           </Box>
         </Grid>
