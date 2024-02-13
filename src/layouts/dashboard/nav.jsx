@@ -14,6 +14,7 @@ import { RouterLink } from 'src/routes/components';
 
 import { useResponsive } from 'src/hooks/use-responsive';
 
+import SvgColor from 'src/components/svg-color';
 import Scrollbar from 'src/components/scrollbar';
 
 import { NAV } from './config-layout';
@@ -36,20 +37,23 @@ export default function Nav({ openNav, onCloseNav }) {
   const renderBadge = (
     <Link
       sx={{
-        my: 3,
-        mx: 2.5,
-        py: 2,
-        px: 2.5,
+        mx:3,
+        my: 2.5,
         display: 'flex',
-        borderRadius: 1.5,
         alignItems: 'center',
-        bgcolor: (theme) => alpha(theme.palette.grey[500], 0.12),
         cursor: 'pointer',
+        justifyContent: 'center',
       }}
       href="https://razorpay.com"
       target="_blank"
     >
-      <img alt="razorpay" src="/assets/rzp.svg" />
+      <SvgColor
+        src="/i18nify-playground/assets/rzp.svg"
+        sx={{
+          width: '200px',
+          height: '35px',
+        }}
+      />
     </Link>
   );
 
