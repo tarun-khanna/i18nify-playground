@@ -22,7 +22,7 @@ const CodeEditor = ({ value }) => {
 
 export default function IsValidPhoneNumberView() {
   const [inpValue, setInpValue] = useState('');
-  const [countryCode, setCountryCode] = useState('IN');
+  const [countryCode, setCountryCode] = useState('');
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const code = inpValue > 5 ? parsePhoneNumber(inpValue) : {};

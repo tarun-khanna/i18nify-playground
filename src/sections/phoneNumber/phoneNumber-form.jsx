@@ -102,7 +102,7 @@ const PhoneNumberForm = ({
                   onInpChange(ev.target.value);
                 }}
                 size="large"
-                placeholder={localPhoneNumbersByDialCodeMap[dialCode.replace('+', '')]}
+                placeholder={localPhoneNumbersByDialCodeMap[dialCode?.replace('+', '')]}
                 error={error}
                 color={showHelperMessage ? (isValid ? 'success' : 'error') : ''}
               />
