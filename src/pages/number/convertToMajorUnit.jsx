@@ -8,7 +8,7 @@ import NumberForm from 'src/sections/number/number-form';
 
 // ----------------------------------------------------------------------
 
-export default function ConverToMajorUnit() {
+export default function ConvertToMajorUnit() {
   const [inpValue, setInpValue] = useState('');
   const [currency, setCurrency] = useState('INR');
   const theme = useTheme();
@@ -19,7 +19,7 @@ export default function ConverToMajorUnit() {
       <Grid container>
         <Grid item xs={isMobile ? 12 : 7}>
           <Typography color="#4767FD" variant="h2" sx={{ mb: 2 }}>
-            ConverToMajorUnit
+            ConvertToMajorUnit
           </Typography>
 
           <Typography variant="body1" sx={{ mb: 6 }}>

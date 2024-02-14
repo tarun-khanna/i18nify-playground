@@ -1,12 +1,17 @@
-import { Box, Container, Grid, Link, Typography } from '@mui/material';
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom';
+
+import { Box, Grid, Link, Container, Typography } from '@mui/material';
 
 const Home = () => {
   const navigate = useNavigate();
 
   return (
     <Container maxWidth="xl">
+      <Helmet>
+        <title> i18nify </title>
+      </Helmet>
       <Grid container>
         <Typography color="#fcbe11" sx={{ mb: 2 }} variant="h2">
           Welcome to i18nify !
