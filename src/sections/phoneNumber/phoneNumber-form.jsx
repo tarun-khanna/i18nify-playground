@@ -138,7 +138,7 @@ const PhoneNumberForm = ({
           value={countryCode}
           onChange={(ev) => onCountryCodeChange(ev.target.value)}
         >
-          <MenuItem value={'--'}>--</MenuItem>
+          <MenuItem value="--">--</MenuItem>
           {Object.entries(countryCodeMap).map(([code, name]) => (
             <MenuItem key={code} value={code}>
               {name}
