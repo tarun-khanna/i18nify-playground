@@ -24,6 +24,8 @@ const navConfig = [
       { title: 'FormatNumberByParts', path: '/number/formatNumberByParts' },
       { title: 'GetCurrencyList', path: '/number/getCurrencyList' },
       { title: 'GetCurrencySymbol', path: '/number/getCurrencySymbol' },
+      { title: 'ConverToMajorUnit', path: '/number/convertToMajorUnit' },
+      { title: 'ConverToMinorUnit', path: '/number/convertToMinorUnit' },
     ],
   },
   {

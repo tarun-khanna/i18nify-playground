@@ -5,7 +5,13 @@ import { Grid, useTheme, Typography, OutlinedInput, useMediaQuery } from '@mui/m
 import IntlOptionsForm from 'src/components/intlOptionsForm';
 import CurrencyListDropdown from 'src/components/currencyListDropdown';
 
-const NumberForm = ({ inpValue, currency, onInpChange, onCurrencyChange }) => {
+const NumberForm = ({
+  inpValue,
+  currency,
+  onInpChange,
+  onCurrencyChange,
+  includeIntlOptions = true,
+}) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
@@ -30,7 +36,7 @@ const NumberForm = ({ inpValue, currency, onInpChange, onCurrencyChange }) => {
           <CurrencyListDropdown currency={currency} onChange={onCurrencyChange} />
         </Grid>
       </Grid>
-      <IntlOptionsForm />
+      {includeIntlOptions && <IntlOptionsForm />}
     </>
   );
 };
