@@ -1,11 +1,12 @@
-import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router';
+import { useEffect, useState } from 'react';
 
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Drawer from '@mui/material/Drawer';
 import { alpha } from '@mui/material/styles';
+import { Collapse, List } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import ListItemButton from '@mui/material/ListItemButton';
 
@@ -18,7 +19,6 @@ import Scrollbar from 'src/components/scrollbar';
 
 import { NAV } from './config-layout';
 import navConfig from './config-navigation';
-import { Collapse, List } from '@mui/material';
 
 // ----------------------------------------------------------------------
 
