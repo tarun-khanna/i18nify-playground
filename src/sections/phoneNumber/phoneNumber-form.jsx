@@ -30,25 +30,20 @@ const PhoneNumberForm = ({
   showDialCodeSelector = true,
   utilName,
   errorMessage,
+  isValid = true,
 }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
-  const validatePhoneNumber = utilName === 'isValidPhoneNumber';
-  const isError = validatePhoneNumber ? errorMessage?.length > 1 : null;
-  const color = validatePhoneNumber
-    ? inpValue.length > 5
-      ? !isError
-        ? 'success'
-        : null
-      : null
-    : null;
+  const validatePhoneNumberUtilView = utilName === 'isValidPhoneNumber';
+  const showHelperMessage = validatePhoneNumberUtilView && inpValue.length > 5;
+  const error = showHelperMessage ? !isValid : null;
 
   return (
     <>
-      <Grid container alignItems="center" marginTop={4}>
+      <Grid container alignItems="center">
         <Grid item>
-          <Typography variant="h5">Please enter phone number.</Typography>
+          <Typography variant="h5">Please enter phone number</Typography>
           {showDialCodeSelector ? (
             <FormHelperText>
               One dial code can be applied to multiple regions ex: +1 shared by countries like the
@@ -62,8 +57,6 @@ const PhoneNumberForm = ({
               <Select
                 size="small"
                 value={dialCode}
-                error={isError}
-                color={color}
                 onChange={(ev) => onDialCodeChange(ev.target.value)}
                 sx={{
                   height: '57px',
@@ -100,27 +93,27 @@ const PhoneNumberForm = ({
                 ))}
               </Select>
             ) : null}
-            <Box fullWidth>
+            <Box>
               <TextField
+                fullWidth
                 value={inpValue}
                 onChange={(ev) => {
                   onInpChange(ev.target.value);
                 }}
                 size="large"
-                fullWidth
                 placeholder={localPhoneNumbersByDialCodeMap[dialCode]}
-                error={isError}
-                color={color}
+                error={error}
+                color={showHelperMessage ? (isValid ? 'success' : 'fail') : null}
               />
-              {validatePhoneNumber ? (
+              {validatePhoneNumberUtilView ? (
                 <Typography
                   marginTop={1}
-                  color={color}
                   variant="caption"
                   display="block"
                   gutterBottom
                   sx={{
-                    visibility: isError ? 'visible' : 'none',
+                    visibility: showHelperMessage ? 'visible' : 'hidden',
+                    color: isValid ? 'green' : 'red',
                   }}
                 >
                   {errorMessage}
@@ -145,6 +138,7 @@ const PhoneNumberForm = ({
           value={countryCode}
           onChange={(ev) => onCountryCodeChange(ev.target.value)}
         >
+          <MenuItem value={'--'}>--</MenuItem>
           {Object.entries(countryCodeMap).map(([code, name]) => (
             <MenuItem key={code} value={code}>
               {name}

@@ -10,19 +10,12 @@ import PhoneNumberForm from 'src/sections/phoneNumber/phoneNumber-form';
 export default function IsValidPhoneNumberView() {
   const [inpValue, setInpValue] = useState('');
   const [dialCode, setDialCode] = useState('91');
-  const [countryCode, setCountryCode] = useState('IN');
+  const [countryCode, setCountryCode] = useState('');
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-  let errorMessage = '';
   const phoneNumber = inpValue.replaceAll(' ').replaceAll('-');
   const isValid = isValidPhoneNumber(`+${dialCode}${phoneNumber}`, countryCode);
-  if (inpValue.length > 5) {
-    if (isValid) {
-      errorMessage = 'Valid phone number';
-    } else {
-      errorMessage = 'Invalid Phone Number';
-    }
-  }
+  const errorMessage = isValid ? 'Valid phone number' : 'Invalid Phone Number';
 
   return (
     <Container maxWidth="xl">
@@ -43,12 +36,13 @@ export default function IsValidPhoneNumberView() {
         <Grid item xs={isMobile ? 12 : 7}>
           <PhoneNumberForm
             inpValue={inpValue}
-            dialCode={dialCode}
             onInpChange={(val) => setInpValue(val)}
+            dialCode={dialCode}
             onDialCodeChange={(val) => setDialCode(val)}
             countryCode={countryCode}
             onCountryCodeChange={(val) => setCountryCode(val)}
             errorMessage={errorMessage}
+            isValid={isValid}
             utilName="isValidPhoneNumber"
           />
         </Grid>
