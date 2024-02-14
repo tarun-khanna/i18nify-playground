@@ -59,7 +59,7 @@ export default function IsValidPhoneNumberView() {
         </Grid>
         {!isMobile && (
           <Grid item xs={5}>
-            <Grid sx={{ height: '60vh' }} container alignItems="center" justifyContent="center">
+            <Grid container alignItems="center" justifyContent="center">
               <Grid item>
                 {forMattedPhoneNumber ? (
                   <Typography variant="h3">{forMattedPhoneNumber}</Typography>
