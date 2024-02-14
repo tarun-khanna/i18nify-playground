@@ -12,15 +12,15 @@ const Home = () => {
           color="#fcbe11"
           sx={{
             mb: 2,
-            fontFamily: 'TASA Orbiter Display',
             fontSize: '72px',
             fontStyle: 'normal',
             fontWeight: 600,
             lineHeight: '78px',
+            color: '#305EFF'
           }}
-          variant="h2"
+          variant="h1"
         >
-          Welcome to i18nify !
+          Welcome to i18nify!
         </Typography>
 
         <Grid item xs={9} sx={{ mb: 2 }}>
