@@ -36,7 +36,7 @@ export default function IsValidPhoneNumberView() {
             onDialCodeChange={(val) => setDialCode(val)}
             countryCode={countryCode}
             onCountryCodeChange={(val) => setCountryCode(val)}
-            utilName={'formatPhoneNumber'}
+            utilName="formatPhoneNumber"
           />
         </Grid>
       </Grid>
