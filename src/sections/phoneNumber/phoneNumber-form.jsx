@@ -103,7 +103,7 @@ const PhoneNumberForm = ({
                 size="large"
                 placeholder={localPhoneNumbersByDialCodeMap[dialCode]}
                 error={error}
-                color={showHelperMessage ? (isValid ? 'success' : 'fail') : null}
+                color={showHelperMessage ? (isValid ? 'success' : 'error') : ''}
               />
               {validatePhoneNumberUtilView ? (
                 <Typography
