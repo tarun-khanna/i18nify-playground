@@ -17,7 +17,8 @@ export default function IsValidPhoneNumberView() {
     dialCode,
     formatTemplate,
     formattedPhoneNumber,
-  } = inpValue > 5 ? parsePhoneNumber(`${inpValue}`) : {};
+  } = inpValue > 5 ? parsePhoneNumber(`${inpValue}`) : {
+  };
 
   return (
     <Container maxWidth="xl">

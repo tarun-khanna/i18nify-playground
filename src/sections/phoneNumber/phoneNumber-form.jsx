@@ -7,9 +7,8 @@ import {
   useTheme,
   TextField,
   Typography,
-  FormControl,
+  Box,
   useMediaQuery,
-  InputAdornment,
   FormHelperText,
 } from '@mui/material';
 
@@ -47,9 +46,7 @@ const PhoneNumberForm = ({
             </MenuItem>
           ))}
         </Select>
-        <FormHelperText>
-          {utilName} expects the country code as second argument
-        </FormHelperText>
+        <FormHelperText>{utilName} expects the country code as second argument</FormHelperText>
       </Grid>
 
       <Grid container alignItems="center" marginTop={4}>
@@ -57,34 +54,35 @@ const PhoneNumberForm = ({
           <Typography variant="h5">Please enter phone number.</Typography>
         </Grid>
         <Grid item xs={isMobile ? 12 : 10}>
-          <TextField
-            value={inpValue}
-            onChange={(ev) => {
-              onInpChange(ev.target.value);
-            }}
-            size="large"
-            fullWidth
-            placeholder={localPhoneNumbersByDialCodeMap[dialCode]}
-            error={error}
-            InputProps={{
-              startAdornment: showDialCodeSelector ? (
-                <InputAdornment position="start">
-                  <Select
-                    fullWidth
-                    size="small"
-                    value={dialCode}
-                    onChange={(ev) => onDialCodeChange(ev.target.value)}
-                  >
-                    {Object.entries(dialCodeMap).map(([code, name]) => (
-                      <MenuItem key={code} value={code}>
-                        + {code}
-                      </MenuItem>
-                    ))}
-                  </Select>
-                </InputAdornment>
-              ) : null,
-            }}
-          />
+          <Box display="flex" alignItems="center">
+            <Select
+              size="small"
+              value={dialCode}
+              onChange={(ev) => onDialCodeChange(ev.target.value)}
+              sx={{
+                height: '54px',
+                alignItems: 'center',
+                display: 'flex',
+                marginRight: 1
+              }}
+            >
+              {Object.entries(dialCodeMap).map(([code, name]) => (
+                <MenuItem key={code} value={code}>
+                  + {code}
+                </MenuItem>
+              ))}
+            </Select>
+            <TextField
+              value={inpValue}
+              onChange={(ev) => {
+                onInpChange(ev.target.value);
+              }}
+              size="large"
+              fullWidth
+              placeholder={localPhoneNumbersByDialCodeMap[dialCode]}
+              error={error}
+            />
+          </Box>
           {showDialCodeSelector ? (
             <FormHelperText>
               One dial code can be applied to multiple regions ex: +1 shared by countries like the
