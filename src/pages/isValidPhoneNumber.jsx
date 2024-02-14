@@ -9,29 +9,21 @@ import PhoneNumberForm from 'src/sections/phoneNumber/phoneNumber-form';
 
 export default function IsValidPhoneNumberView() {
   const [inpValue, setInpValue] = useState('');
+  const [dialCode, setDialCode] = useState('91');
   const [countryCode, setCountryCode] = useState('IN');
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   let message = '';
-  let isValid = false;
+  const phoneNumber = inpValue.replaceAll(' ').replaceAll('-');
+  const isValid = isValidPhoneNumber(`+${dialCode}${phoneNumber}`, countryCode);
   if (inpValue.length > 5) {
-    const phoneNumber = inpValue.replaceAll(' ', '').replaceAll('-', '');
-    console.log(phoneNumber, countryCode, isValidPhoneNumber(phoneNumber, countryCode));
-    if (isValidPhoneNumber(phoneNumber, countryCode)) {
+    if (isValid) {
       message = 'Valid phone number';
-      isValid = true;
     } else {
       message = 'Invalid Phone Number';
-      isValid = false;
     }
   }
 
-  const MessageComponent = (
-    // eslint-disable-next-line no-nested-ternary
-    <Typography variant="h2" color={message.length > 0 ? (isValid ? 'lightseagreen' : 'red') : ''}>
-      {message}
-    </Typography>
-  );
   return (
     <Container maxWidth="xl">
       <Grid container>
@@ -45,34 +37,25 @@ export default function IsValidPhoneNumberView() {
           </Typography>
         </Grid>
 
-        {isMobile && (
-          <Grid item xs={12}>
-            <Grid sx={{ height: '100px' }} container alignItems="center" justifyContent="center">
-              <Grid item>{MessageComponent}</Grid>
-            </Grid>
-          </Grid>
-        )}
-
-        <Grid
-          item
-          xs={isMobile ? 12 : 7}
-          sx={!isMobile && { 'border-right': '1px solid rgba(0,0,0,0.2)', pr: 2 }}
-        >
+        <Grid item xs={isMobile ? 12 : 7}>
           <PhoneNumberForm
             inpValue={inpValue}
-            countryCode={countryCode}
+            dialCode={dialCode}
             onInpChange={(val) => setInpValue(val)}
+            onDialCodeChange={(val) => setDialCode(val)}
+            countryCode={countryCode}
             onCountryCodeChange={(val) => setCountryCode(val)}
+            isValid={isValid}
           />
         </Grid>
-
-        {!isMobile && (
-          <Grid item xs={5}>
-            <Grid sx={{ height: '60vh' }} container alignItems="center" justifyContent="center">
-              <Grid item>{MessageComponent}</Grid>
-            </Grid>
-          </Grid>
-        )}
+      </Grid>
+      <Grid item marginTop={3}>
+        <Typography
+          variant="h4"
+          color={message.length > 0 ? (isValid ? 'lightseagreen' : 'red') : ''}
+        >
+          {message}
+        </Typography>
       </Grid>
     </Container>
   );
