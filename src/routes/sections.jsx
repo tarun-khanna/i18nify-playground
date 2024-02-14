@@ -4,9 +4,9 @@ import { Box } from '@mui/material';
 
 import Home from 'src/pages/home';
 import NumberPage from 'src/pages/number';
-import PhoneNumber from 'src/pages/phoneNumber';
+import PhoneNumber from 'src/pages/phone/phoneNumber';
 import DashboardLayout from 'src/layouts/dashboard';
-import IsValidPhoneNumberView from 'src/pages/isValidPhoneNumber';
+import IsValidPhoneNumberView from 'src/pages/phone/isValidPhoneNumber';
 import FormatNumber from 'src/pages/number/formatNumber';
 import FormatNumberByParts from 'src/pages/number/formatNumberByParts';
 
