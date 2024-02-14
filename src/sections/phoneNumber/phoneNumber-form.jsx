@@ -40,6 +40,7 @@ const PhoneNumberForm = ({
               <Select
                 size="small"
                 value={dialCode}
+                error={error}
                 onChange={(ev) => onDialCodeChange(ev.target.value)}
                 sx={{
                   height: '54px',
