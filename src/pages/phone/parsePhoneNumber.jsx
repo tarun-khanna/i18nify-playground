@@ -37,7 +37,7 @@ export default function IsValidPhoneNumberView() {
           </Typography>
 
           <Typography variant="body1" sx={{ mb: 6 }}>
-            Unraveling the secrets of your number! Let's decode this digital puzzle into something more... worldly. 🌐✨
+          🕵️‍♂️📞 This clever function digs deep into a phone number, pulling out all the juicy details: country code, dial code, the number all dolled up, and even the format it follows. What’s cool? It hands you back an object filled with all these deets, making it a breeze to access everything about that phone number. It’s like having the ultimate phone number cheat sheet! 🌟
           </Typography>
         </Grid>
         {isMobile && (

@@ -33,7 +33,10 @@ export default function IsValidPhoneNumberView() {
           </Typography>
 
           <Typography variant="body1" sx={{ mb: 6 }}>
-            Entering the digits realm, huh? Let's make sure this number doesn't just lead to the void. 📱✨
+            📞 It’s like the phone number detective, using fancy patterns to check if a number is
+            the real deal for a specific country code. So, it’s pretty simple: if it says true, your
+            number’s good to go for that country; if it’s false, time to double-check those digits!
+            🕵️‍♂️🔍
           </Typography>
         </Grid>
 

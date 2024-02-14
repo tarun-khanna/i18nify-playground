@@ -12,9 +12,12 @@ import {
   FormHelperText,
 } from '@mui/material';
 
-import SvgColor from 'src/components/svg-color';
-
-import { dialCodeMap, countryCodeMap, dialCodeCountryCodeMap, localPhoneNumbersByDialCodeMap } from './data/phoneNumber';
+import {
+  dialCodeMap,
+  countryCodeMap,
+  dialCodeCountryCodeMap,
+  localPhoneNumbersByDialCodeMap,
+} from './data/phoneNumber';
 
 const PhoneNumberForm = ({
   inpValue,
@@ -30,16 +33,19 @@ const PhoneNumberForm = ({
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
-  const countryCodeBasedOnDialCode = dialCodeCountryCodeMap[dialCode][0].toLocaleLowerCase();
-  console.log(countryCodeBasedOnDialCode, `/i18nify-playground/assets/flags/${countryCodeBasedOnDialCode}.svg`);
-
   return (
     <>
       <Grid container alignItems="center" marginTop={4}>
         <Grid item>
           <Typography variant="h5">Please enter phone number.</Typography>
+          {showDialCodeSelector ? (
+            <FormHelperText>
+              One dial code can be applied to multiple regions ex: +1 shared by countries like the
+              United States, Canada, Barbados, Bermuda
+            </FormHelperText>
+          ) : null}
         </Grid>
-        <Grid item xs={isMobile ? 12 : 10}>
+        <Grid item xs={isMobile ? 12 : 10} marginTop={1}>
           <Box display="flex" alignItems="center">
             {showDialCodeSelector ? (
               <Select
@@ -52,15 +58,32 @@ const PhoneNumberForm = ({
                   alignItems: 'center',
                   display: 'flex',
                   marginRight: 1,
+                  width: '190px',
+                  justifyContent: 'center',
                 }}
               >
                 {Object.entries(dialCodeMap).map(([code, name]) => (
                   <MenuItem key={code} value={code}>
-                    + {code}{' '}
-                    <SvgColor
-                      src={`/i18nify-playground/assets/flags/${countryCodeBasedOnDialCode}.svg`}
-                      sx={{ width: 10, height: 10 }}
-                    />
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        textOverflow: 'initial',
+                      }}
+                    >
+                      <div width="30px">+ {code}</div>
+                      <img
+                        width="40px"
+                        style={{
+                          marginLeft: 8,
+                          marginRight: 8,
+                        }}
+                        loading="lazy"
+                        src={`/i18nify-playground/assets/flags/${dialCodeCountryCodeMap[
+                          code
+                        ][0].toLocaleLowerCase()}.svg`}
+                      />
+                    </Box>
                   </MenuItem>
                 ))}
               </Select>
@@ -76,12 +99,6 @@ const PhoneNumberForm = ({
               error={error}
             />
           </Box>
-          {showDialCodeSelector ? (
-            <FormHelperText>
-              One dial code can be applied to multiple regions ex: +1 shared by countries like the
-              United States, Canada, Barbados, Bermuda
-            </FormHelperText>
-          ) : null}
         </Grid>
       </Grid>
 
