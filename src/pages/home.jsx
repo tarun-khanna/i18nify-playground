@@ -1,22 +1,48 @@
 import { Box, Container, Grid, Link, Typography } from '@mui/material';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+function generateRandomColor() {
+  const colorList = [
+    '#305EFF',
+    '#FF5733',
+    '#C70039',
+    '#900C3F',
+    '#581845',
+    '#FFC300',
+    '#DAF7A6',
+    '#FF5733',
+    '#C70039',
+    '#900C3F',
+  ];
+  const randomIndex = Math.floor(Math.random() * colorList.length);
+  return colorList[randomIndex];
+}
+
 const Home = () => {
+  const [color, setColor] = useState('#305EFF');
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setColor(generateRandomColor());
+    }, 1000);
+
+    // Clear interval on component unmount
+    return () => clearInterval(intervalId);
+  }, []);
 
   return (
     <Container maxWidth="xl">
       <Grid container>
         <Typography
-          color="#fcbe11"
           sx={{
             mb: 2,
             fontSize: '72px',
             fontStyle: 'normal',
             fontWeight: 600,
             lineHeight: '78px',
-            color: '#305EFF'
+            color,
           }}
           variant="h1"
         >
@@ -89,7 +115,13 @@ const Home = () => {
             Plugins
           </Typography>
           <Box>
-            <Link component="button" underline="none" onClick={() => navigate('/plugins')} fontWeight="600" color="#2950DA">
+            <Link
+              component="button"
+              underline="none"
+              onClick={() => navigate('/plugins')}
+              fontWeight="600"
+              color="#2950DA"
+            >
               i18nify-react
             </Link>
           </Box>
@@ -100,7 +132,13 @@ const Home = () => {
             Polyfills
           </Typography>
           <Box>
-            <Link component="button" underline="none" onClick={() => navigate('/plugins')} fontWeight="600" color="#2950DA">
+            <Link
+              component="button"
+              underline="none"
+              onClick={() => navigate('/plugins')}
+              fontWeight="600"
+              color="#2950DA"
+            >
               FormatNumberByParts
             </Link>
           </Box>
