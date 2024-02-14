@@ -1,5 +1,7 @@
 import React from 'react';
-import { Box, Container, Grid, Link, Typography, useTheme, useMediaQuery } from '@mui/material';
+
+import { Box, Grid, useTheme, Container, Typography, useMediaQuery } from '@mui/material';
+
 import SvgColor from '../../components/svg-color';
 
 const Footer = () => {
@@ -16,8 +18,8 @@ const Footer = () => {
         bgcolor: '#305EFF17',
       }}
     >
-      <Container width="100%">
-        <Grid container spacing={isMobile ? 2 : 0} padding={4} display="flex" alignItems="center">
+      <Container>
+        <Grid container spacing={isMobile ? 2 : 0} paddingY={2} display="flex" alignItems="center" sx={{ marginX:isMobile ? 0 : "-24px" }} >
           <Grid item xs={12} sm={4} display="flex" alignItems="center" justifyContent="flex-start">
             <Typography>©2024 Razorpay</Typography>
           </Grid>
