@@ -40,40 +40,44 @@ const Home = () => {
           </Typography>
           <Box>
             <Link
-              color="#4767FD"
+              color="#2950DA"
               component="button"
               underline="none"
               onClick={() => navigate('/number')}
+              fontWeight="600"
             >
               Number
             </Link>
           </Box>
           <Box>
             <Link
-              color="#4767FD"
+              color="#2950DA"
               component="button"
               underline="none"
               onClick={() => navigate('/phone')}
+              fontWeight="600"
             >
               Phone Number
             </Link>
           </Box>
           <Box>
             <Link
-              color="#4767FD"
+              color="#2950DA"
               component="button"
               underline="none"
               onClick={() => navigate('/date')}
+              fontWeight="600"
             >
               Date
             </Link>
           </Box>
           <Box>
             <Link
-              color="#4767FD"
+              color="#2950DA"
               component="button"
               underline="none"
               onClick={() => navigate('/state')}
+              fontWeight="600"
             >
               Core State module
             </Link>
@@ -85,7 +89,7 @@ const Home = () => {
             Plugins
           </Typography>
           <Box>
-            <Link component="button" underline="none" onClick={() => navigate('/plugins')}>
+            <Link component="button" underline="none" onClick={() => navigate('/plugins')} fontWeight="600" color="#2950DA">
               i18nify-react
             </Link>
           </Box>
@@ -96,7 +100,7 @@ const Home = () => {
             Polyfills
           </Typography>
           <Box>
-            <Link component="button" underline="none" onClick={() => navigate('/plugins')}>
+            <Link component="button" underline="none" onClick={() => navigate('/plugins')} fontWeight="600" color="#2950DA">
               FormatNumberByParts
             </Link>
           </Box>
