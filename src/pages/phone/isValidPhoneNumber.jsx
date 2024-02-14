@@ -14,9 +14,10 @@ export default function IsValidPhoneNumberView() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const phoneNumber = inpValue.replaceAll(' ').replaceAll('-');
-  const isValid = isValidPhoneNumber(`+${dialCode}${phoneNumber}`, countryCode);
+  const isValid = isValidPhoneNumber(`${dialCode}${phoneNumber}`, countryCode);
   const errorMessage = isValid ? 'Valid phone number' : 'Invalid Phone Number';
 
+  console.log(phoneNumber, countryCode, isValidPhoneNumber(phoneNumber, countryCode))
   return (
     <Container maxWidth="xl">
       <Grid container>

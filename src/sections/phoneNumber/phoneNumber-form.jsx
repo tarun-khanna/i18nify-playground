@@ -67,8 +67,9 @@ const PhoneNumberForm = ({
                   justifyContent: 'center',
                 }}
               >
+                <MenuItem value="" />
                 {Object.entries(dialCodeMap).map(([code, name]) => (
-                  <MenuItem key={code} value={code}>
+                  <MenuItem key={code} value={`+${code}`}>
                     <Box
                       sx={{
                         display: 'flex',
@@ -101,7 +102,7 @@ const PhoneNumberForm = ({
                   onInpChange(ev.target.value);
                 }}
                 size="large"
-                placeholder={localPhoneNumbersByDialCodeMap[dialCode]}
+                placeholder={localPhoneNumbersByDialCodeMap[dialCode.replace('+', '')]}
                 error={error}
                 color={showHelperMessage ? (isValid ? 'success' : 'error') : ''}
               />
@@ -128,7 +129,7 @@ const PhoneNumberForm = ({
         <Typography variant="h5">Please select the country</Typography>
         <FormHelperText>
           {utilName} expects the country code as second argument, this is not mandatory. i18nify all
-          ways take the dial code as primary priority
+          ways take the dial code as primary priority.
         </FormHelperText>
       </Grid>
       <Grid item xs={isMobile ? 7 : 6} marginTop={1}>
