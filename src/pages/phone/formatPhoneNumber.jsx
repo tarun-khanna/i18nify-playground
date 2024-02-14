@@ -9,7 +9,7 @@ import PhoneNumberForm from 'src/sections/phoneNumber/phoneNumber-form';
 
 export default function IsValidPhoneNumberView() {
   const [inpValue, setInpValue] = useState('');
-  const [dialCode, setDialCode] = useState('91');
+  const [dialCode, setDialCode] = useState('+91');
   const [countryCode, setCountryCode] = useState('');
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
