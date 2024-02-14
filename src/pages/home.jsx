@@ -8,7 +8,18 @@ const Home = () => {
   return (
     <Container maxWidth="xl">
       <Grid container>
-        <Typography color="#fcbe11" sx={{ mb: 2 }} variant="h2">
+        <Typography
+          color="#fcbe11"
+          sx={{
+            mb: 2,
+            fontFamily: 'TASA Orbiter Display',
+            fontSize: '72px',
+            fontStyle: 'normal',
+            fontWeight: 600,
+            lineHeight: '78px',
+          }}
+          variant="h2"
+        >
           Welcome to i18nify !
         </Typography>
 
