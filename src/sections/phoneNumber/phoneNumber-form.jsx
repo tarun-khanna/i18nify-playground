@@ -14,7 +14,7 @@ import {
 
 import SvgColor from 'src/components/svg-color';
 
-import { dialCodeMap, countryCodeMap, countryCodeAndDialCodeMap, localPhoneNumbersByDialCodeMap } from './data/phoneNumber';
+import { dialCodeMap, countryCodeMap, dialCodeCountryCodeMap, localPhoneNumbersByDialCodeMap } from './data/phoneNumber';
 
 const PhoneNumberForm = ({
   inpValue,
@@ -29,6 +29,9 @@ const PhoneNumberForm = ({
 }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
+  const countryCodeBasedOnDialCode = dialCodeCountryCodeMap[dialCode][0].toLocaleLowerCase();
+  console.log(countryCodeBasedOnDialCode, `/i18nify-playground/assets/flags/${countryCodeBasedOnDialCode}.svg`);
 
   return (
     <>
@@ -55,7 +58,7 @@ const PhoneNumberForm = ({
                   <MenuItem key={code} value={code}>
                     + {code}{' '}
                     <SvgColor
-                      src={`/i18nify-playground/assets/flags/${countryCodeAndDialCodeMap[dialCode]}.svg`}
+                      src={`/i18nify-playground/assets/flags/${countryCodeBasedOnDialCode}.svg`}
                       sx={{ width: 10, height: 10 }}
                     />
                   </MenuItem>
