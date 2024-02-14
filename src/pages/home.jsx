@@ -23,7 +23,7 @@ const Home = () => {
           Welcome to i18nify!
         </Typography>
 
-        <Grid item xs={9} sx={{ mb: 2 }}>
+        <Grid item xs={12} sm={9} sx={{ mb: 2 }}>
           <Typography variant="body1">
             A one-stop solution built in javascript to provide internationalization support. Hey,
             dive into this JavaScript toolkit—it’s like having a magic kit for your app! 🪄✨
