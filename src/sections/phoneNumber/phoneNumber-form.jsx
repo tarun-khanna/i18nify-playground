@@ -67,7 +67,13 @@ const PhoneNumberForm = ({
                   justifyContent: 'center',
                 }}
               >
-                <MenuItem value="" />
+                <MenuItem
+                  sx={{
+                    height: '30px',
+                  }}
+                >
+                  -
+                </MenuItem>
                 {Object.entries(dialCodeMap).map(([code, name]) => (
                   <MenuItem key={code} value={`+${code}`}>
                     <Box
