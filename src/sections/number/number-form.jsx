@@ -1,17 +1,17 @@
-import {
-  Grid,
-  MenuItem,
-  OutlinedInput,
-  Select,
-  Typography,
-  useMediaQuery,
-  useTheme,
-} from '@mui/material';
-import { getCurrencyList } from '@razorpay/i18nify-js';
 import React from 'react';
-import IntlOptionsForm from 'src/components/intlOptionsForm';
 
-const NumberForm = ({ inpValue, currency, onInpChange, onCurrencyChange }) => {
+import { Grid, useTheme, Typography, OutlinedInput, useMediaQuery } from '@mui/material';
+
+import IntlOptionsForm from 'src/components/intlOptionsForm';
+import CurrencyListDropdown from 'src/components/currencyListDropdown';
+
+const NumberForm = ({
+  inpValue,
+  currency,
+  onInpChange,
+  onCurrencyChange,
+  includeIntlOptions = true,
+}) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
@@ -33,21 +33,10 @@ const NumberForm = ({ inpValue, currency, onInpChange, onCurrencyChange }) => {
           <Typography variant="h5">Choose Currency:</Typography>
         </Grid>
         <Grid item xs={isMobile ? 7 : 6}>
-          <Select
-            fullWidth
-            size="small"
-            value={currency}
-            onChange={(ev) => onCurrencyChange(ev.target.value)}
-          >
-            {Object.keys(getCurrencyList()).map((option) => (
-              <MenuItem key={option} value={option}>
-                {option}
-              </MenuItem>
-            ))}
-          </Select>
+          <CurrencyListDropdown currency={currency} onChange={onCurrencyChange} />
         </Grid>
       </Grid>
-      <IntlOptionsForm />
+      {includeIntlOptions && <IntlOptionsForm />}
     </>
   );
 };

@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router';
 
 import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
@@ -7,6 +8,7 @@ import Stack from '@mui/material/Stack';
 import Drawer from '@mui/material/Drawer';
 import { alpha } from '@mui/material/styles';
 import { List, Collapse } from '@mui/material';
+import Typography from '@mui/material/Typography';
 import ListItemButton from '@mui/material/ListItemButton';
 
 import { usePathname } from 'src/routes/hooks';
@@ -36,7 +38,7 @@ export default function Nav({ openNav, onCloseNav }) {
   const renderBadge = (
     <Link
       sx={{
-        mx:3,
+        mx: 3,
         my: 2.5,
         display: 'flex',
         alignItems: 'center',
@@ -46,11 +48,7 @@ export default function Nav({ openNav, onCloseNav }) {
       href="https://razorpay.com"
       target="_blank"
     >
-      <img
-        src="/i18nify-playground/assets/rzp.svg"
-        height='35px'
-        alt="Razorpay"
-      />
+      <img src="/i18nify-playground/assets/rzp.svg" height="35px" alt="Razorpay" />
     </Link>
   );
 

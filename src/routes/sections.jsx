@@ -4,8 +4,14 @@ import { Box } from '@mui/material';
 
 import Home from 'src/pages/home';
 import NumberPage from 'src/pages/number';
-import FormatNumber from 'src/pages/formatNumber';
+import FormatNumber from 'src/pages/number/formatNumber';
+import FormatNumberByParts from 'src/pages/number/formatNumberByParts';
+
 import DashboardLayout from 'src/layouts/dashboard';
+import GetCurrencySymbol from 'src/pages/number/getCurrencySymbol';
+import GetCurrencyList from 'src/pages/number/getCurrencyList';
+import ConverToMajorUnit from 'src/pages/number/convertToMajorUnit';
+import ConvertToMinorUnit from 'src/pages/number/convertToMinorUnit';
 
 // ----------------------------------------------------------------------
 
@@ -28,15 +34,23 @@ export default function Router() {
         },
         {
           path: 'number/formatNumberByParts',
-          element: <Box />,
+          element: <FormatNumberByParts />,
         },
         {
           path: 'number/getCurrencyList',
-          element: <Box />,
+          element: <GetCurrencyList />,
         },
         {
           path: 'number/getCurrencySymbol',
-          element: <Box />,
+          element: <GetCurrencySymbol />,
+        },
+        {
+          path: 'number/convertToMajorUnit',
+          element: <ConverToMajorUnit />,
+        },
+        {
+          path: 'number/convertToMinorUnit',
+          element: <ConvertToMinorUnit />,
         },
         {
           path: 'number',

@@ -1,12 +1,16 @@
-import { Link as RouterLink, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import Container from '@mui/material/Container';
 import { Box, Grid, Link, Typography } from '@mui/material';
+
+import navConfig from 'src/layouts/dashboard/config-navigation';
 
 // ----------------------------------------------------------------------
 
 export default function NumberView() {
   const navigate = useNavigate();
+  const numberLinks = navConfig.find((item) => item.title.toLowerCase() === 'number').children;
+
   return (
     <Container maxWidth="xl">
       <Grid container>
@@ -25,46 +29,18 @@ export default function NumberView() {
           <Typography variant="h3" sx={{ mb: 1 }}>
             APIs
           </Typography>
-          <Box>
-            <Link
-              color="#4767FD"
-              component="button"
-              underline="none"
-              onClick={() => navigate('/number/formatNumber')}
-            >
-              FormatNumber
-            </Link>
-          </Box>
-          <Box>
-            <Link
-              color="#4767FD"
-              component="button"
-              underline="none"
-              onClick={() => navigate('/number/formatNumberByParts')}
-            >
-              FormatNumberByParts
-            </Link>
-          </Box>
-          <Box>
-            <Link
-              color="#4767FD"
-              component="button"
-              underline="none"
-              onClick={() => navigate('/number/getCurrencyList')}
-            >
-              GetCurrencyList
-            </Link>
-          </Box>
-          <Box>
-            <Link
-              color="#4767FD"
-              component="button"
-              underline="none"
-              onClick={() => navigate('/number/getCurrencySymbol')}
-            >
-              GetCurrencySymbol
-            </Link>
-          </Box>
+          {numberLinks.map((link) => (
+            <Box key={link.path}>
+              <Link
+                color="#4767FD"
+                component="button"
+                underline="none"
+                onClick={() => navigate(link.path)}
+              >
+                {link.title}
+              </Link>
+            </Box>
+          ))}
         </Grid>
       </Grid>
     </Container>
