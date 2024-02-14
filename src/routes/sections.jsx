@@ -14,7 +14,7 @@ import FormatNumberByParts from 'src/pages/number/formatNumberByParts';
 
 import GetCurrencySymbol from 'src/pages/number/getCurrencySymbol';
 import GetCurrencyList from 'src/pages/number/getCurrencyList';
-import ConverToMajorUnit from 'src/pages/number/convertToMajorUnit';
+import ConvertToMajorUnit from 'src/pages/number/convertToMajorUnit';
 import ConvertToMinorUnit from 'src/pages/number/convertToMinorUnit';
 
 // ----------------------------------------------------------------------
@@ -50,7 +50,7 @@ export default function Router() {
         },
         {
           path: 'number/convertToMajorUnit',
-          element: <ConverToMajorUnit />,
+          element: <ConvertToMajorUnit />,
         },
         {
           path: 'number/convertToMinorUnit',

@@ -13,7 +13,7 @@ export default function IsValidPhoneNumberView() {
   const [countryCode, setCountryCode] = useState('');
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-  const forMattedPhoneNumber = inpValue > 5 ? formatPhoneNumber(`${inpValue}`) : null;
+  const forMattedPhoneNumber = inpValue > 5 ? formatPhoneNumber(`${dialCode}${inpValue}`) : null;
 
   return (
     <Container maxWidth="xl">
