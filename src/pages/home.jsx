@@ -1,6 +1,7 @@
-import { Box, Container, Grid, Link, Typography } from '@mui/material';
-import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+
+import { Box, Grid, Link, Container, Typography } from '@mui/material';
 
 function generateRandomColor() {
   const colorList = [
