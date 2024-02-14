@@ -33,7 +33,7 @@ export default function IsValidPhoneNumberView() {
           </Typography>
 
           <Typography variant="body1" sx={{ mb: 6 }}>
-            🎩✨ This little util helps you validate the phone number values.🌟💸
+            Entering the digits realm, huh? Let's make sure this number doesn't just lead to the void. 📱✨
           </Typography>
         </Grid>
 

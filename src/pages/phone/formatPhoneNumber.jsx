@@ -24,7 +24,7 @@ export default function IsValidPhoneNumberView() {
           </Typography>
 
           <Typography variant="body1" sx={{ mb: 6 }}>
-            🎩✨ This little util helps you validate the phone number values.🌟💸
+            Let's give your number a local makeover! Dialing in style, country code and all. 🌍✨
           </Typography>
         </Grid>
 

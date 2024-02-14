@@ -1,18 +1,20 @@
 import React from 'react';
 
 import {
+  Box,
   Grid,
   Select,
   MenuItem,
   useTheme,
   TextField,
   Typography,
-  Box,
   useMediaQuery,
   FormHelperText,
 } from '@mui/material';
 
-import { dialCodeMap, countryCodeMap, localPhoneNumbersByDialCodeMap } from './data/phoneNumber';
+import SvgColor from 'src/components/svg-color';
+
+import { dialCodeMap, countryCodeMap, countryCodeAndDialCodeMap, localPhoneNumbersByDialCodeMap } from './data/phoneNumber';
 
 const PhoneNumberForm = ({
   inpValue,
@@ -51,7 +53,11 @@ const PhoneNumberForm = ({
               >
                 {Object.entries(dialCodeMap).map(([code, name]) => (
                   <MenuItem key={code} value={code}>
-                    + {code}
+                    + {code}{' '}
+                    <SvgColor
+                      src={`/i18nify-playground/assets/flags/${countryCodeAndDialCodeMap[dialCode]}.svg`}
+                      sx={{ width: 10, height: 10 }}
+                    />
                   </MenuItem>
                 ))}
               </Select>
