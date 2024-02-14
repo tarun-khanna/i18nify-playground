@@ -20,12 +20,13 @@ const CodeEditor = ({ value }) => {
 
 // ----------------------------------------------------------------------
 
-export default function IsValidPhoneNumberView() {
+export default function ParsePhoneNumber() {
   const [inpValue, setInpValue] = useState('');
   const [countryCode, setCountryCode] = useState('');
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-  const code = inpValue > 5 ? parsePhoneNumber(inpValue) : {};
+  const [dialCode, setDialCode] = useState('+91');
+  const code = inpValue > 5 ? parsePhoneNumber(`${dialCode}${inpValue}`) : {};
   const formattedCode = JSON.stringify(code, null, 2);
 
   return (
@@ -37,7 +38,11 @@ export default function IsValidPhoneNumberView() {
           </Typography>
 
           <Typography variant="body1" sx={{ mb: 6 }}>
-          🕵️‍♂️📞 This clever function digs deep into a phone number, pulling out all the juicy details: country code, dial code, the number all dolled up, and even the format it follows. What’s cool? It hands you back an object filled with all these deets, making it a breeze to access everything about that phone number. It’s like having the ultimate phone number cheat sheet! 🌟
+            🕵️‍♂️📞 This clever function digs deep into a phone number, pulling out all the juicy
+            details: country code, dial code, the number all dolled up, and even the format it
+            follows. What’s cool? It hands you back an object filled with all these deets, making it
+            a breeze to access everything about that phone number. It’s like having the ultimate
+            phone number cheat sheet! 🌟
           </Typography>
         </Grid>
         {isMobile && (
@@ -49,13 +54,18 @@ export default function IsValidPhoneNumberView() {
             </Grid>
           </Grid>
         )}
-        <Grid item xs={isMobile ? 12 : 7}   sx={!isMobile && { 'border-right': '1px solid rgba(0,0,0,0.2)', pr: 2 }}>
+        <Grid
+          item
+          xs={isMobile ? 12 : 7}
+          sx={!isMobile && { 'border-right': '1px solid rgba(0,0,0,0.2)', pr: 2 }}
+        >
           <PhoneNumberForm
             inpValue={inpValue}
             onInpChange={(val) => setInpValue(val)}
             countryCode={countryCode}
+            dialCode={dialCode}
+            onDialCodeChange={(val) => setDialCode(val)}
             onCountryCodeChange={(val) => setCountryCode(val)}
-            showDialCodeSelector={false}
             utilName="parsePhoneNumber"
           />
         </Grid>
