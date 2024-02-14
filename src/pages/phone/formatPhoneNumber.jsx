@@ -28,7 +28,22 @@ export default function IsValidPhoneNumberView() {
           </Typography>
         </Grid>
 
-        <Grid item xs={isMobile ? 12 : 7}  sx={!isMobile && { 'border-right': '1px solid rgba(0,0,0,0.2)', pr: 2 }}>
+        {isMobile && (
+          <Grid item xs={12}>
+            <Grid sx={{ height: '200px' }} container alignItems="center" justifyContent="center">
+              <Grid item sx={{ height: '200px', width: '100%', padding: '20px 0px' }}>
+                {forMattedPhoneNumber ? (
+                  <Typography variant="h5">{forMattedPhoneNumber}</Typography>
+                ) : null}
+              </Grid>
+            </Grid>
+          </Grid>
+        )}
+        <Grid
+          item
+          xs={isMobile ? 12 : 7}
+          sx={!isMobile && { 'border-right': '1px solid rgba(0,0,0,0.2)', pr: 2 }}
+        >
           <PhoneNumberForm
             inpValue={inpValue}
             dialCode={dialCode}
@@ -39,9 +54,17 @@ export default function IsValidPhoneNumberView() {
             utilName="formatPhoneNumber"
           />
         </Grid>
-      </Grid>
-      <Grid item marginTop={3}>
-        {forMattedPhoneNumber ? <Typography variant="h5">{forMattedPhoneNumber}</Typography> : null}
+        {!isMobile && (
+          <Grid item xs={5}>
+            <Grid sx={{ height: '60vh' }} container alignItems="center" justifyContent="center">
+              <Grid item sx={{ height: '100%', width: '100%', padding: '0px 20px' }}>
+                {forMattedPhoneNumber ? (
+                  <Typography variant="h5">{forMattedPhoneNumber}</Typography>
+                ) : null}
+              </Grid>
+            </Grid>
+          </Grid>
+        )}
       </Grid>
     </Container>
   );
