@@ -44,10 +44,10 @@ export default function IsValidPhoneNumberView() {
         </Grid>
       </Grid>
       <Grid item marginTop={3}>
-        <Typography variant="h5">countryCode: {parsedCountryCode}</Typography>
-        <Typography variant="h5">dialCode: {dialCode}</Typography>
-        <Typography variant="h5">formatTemplate: {formatTemplate}</Typography>
-        <Typography variant="h5">formattedPhoneNumber: {formattedPhoneNumber}</Typography>
+        <Typography variant="h5">Country Code: {parsedCountryCode}</Typography>
+        <Typography variant="h5">Dial Code: {dialCode}</Typography>
+        <Typography variant="h5">Format Template: {formatTemplate}</Typography>
+        <Typography variant="h5">Formatted PhoneNumber: {formattedPhoneNumber}</Typography>
       </Grid>
     </Container>
   );
