@@ -102,7 +102,7 @@ const PhoneNumberForm = ({
         </Grid>
       </Grid>
 
-      <Grid item xs={isMobile ? 5 : 8} marginTop={3}>
+      <Grid item xs={isMobile ? 12 : 10} marginTop={3}>
         <Typography variant="h5">Please select the country</Typography>
         <FormHelperText>
           {utilName} expects the country code as second argument, this is not mandatory. i18nify all
