@@ -128,7 +128,7 @@ const PhoneNumberForm = ({
         <Typography variant="h5">Please select the country</Typography>
         <FormHelperText>
           {utilName} expects the country code as second argument, this is not mandatory. i18nify all
-          ways take the dial code as secondary priority
+          ways take the dial code as primary priority
         </FormHelperText>
       </Grid>
       <Grid item xs={isMobile ? 7 : 6} marginTop={1}>
