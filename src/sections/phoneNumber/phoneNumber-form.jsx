@@ -22,7 +22,7 @@ const PhoneNumberForm = ({
   onDialCodeChange,
   countryCode,
   onCountryCodeChange,
-  isValid,
+  error,
 }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -63,7 +63,7 @@ const PhoneNumberForm = ({
             size="large"
             fullWidth
             placeholder={localPhoneNumbersByDialCodeMap[dialCode]}
-            error={isValid}
+            error={error}
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">

@@ -45,13 +45,13 @@ export default function IsValidPhoneNumberView() {
             onDialCodeChange={(val) => setDialCode(val)}
             countryCode={countryCode}
             onCountryCodeChange={(val) => setCountryCode(val)}
-            isValid={isValid}
+            error={message.length > 0 ? !isValid : false}
           />
         </Grid>
       </Grid>
       <Grid item marginTop={3}>
         <Typography
-          variant="h4"
+          variant="h5"
           color={message.length > 0 ? (isValid ? 'lightseagreen' : 'red') : ''}
         >
           {message}
