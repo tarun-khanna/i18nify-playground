@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { isValidPhoneNumber } from '@razorpay/i18nify-js/phoneNumber';
+import { formatPhoneNumber } from '@razorpay/i18nify-js/phoneNumber';
 
 import Container from '@mui/material/Container';
 import { Grid, useTheme, Typography, useMediaQuery } from '@mui/material';
@@ -13,23 +13,14 @@ export default function IsValidPhoneNumberView() {
   const [countryCode, setCountryCode] = useState('IN');
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-  let message = '';
-  const phoneNumber = inpValue.replaceAll(' ').replaceAll('-');
-  const isValid = isValidPhoneNumber(`+${dialCode}${phoneNumber}`, countryCode);
-  if (inpValue.length > 5) {
-    if (isValid) {
-      message = 'Valid phone number';
-    } else {
-      message = 'Invalid Phone Number';
-    }
-  }
+  const forMattedPhoneNumber = inpValue > 5 ? formatPhoneNumber(`${inpValue}`) : null;
 
   return (
     <Container maxWidth="xl">
       <Grid container>
         <Grid item xs={isMobile ? 12 : 7}>
           <Typography color="#4767FD" variant="h2" sx={{ mb: 2 }}>
-            isValidPhoneNumber
+            ParsePhoneNumber
           </Typography>
 
           <Typography variant="body1" sx={{ mb: 6 }}>
@@ -45,18 +36,17 @@ export default function IsValidPhoneNumberView() {
             onDialCodeChange={(val) => setDialCode(val)}
             countryCode={countryCode}
             onCountryCodeChange={(val) => setCountryCode(val)}
-            error={message.length > 0 ? !isValid : false}
-            utilName="isValidPhoneNumber"
+            showDialCodeSelector={false}
+            utilName="parsePhoneNumber"
           />
         </Grid>
       </Grid>
       <Grid item marginTop={3}>
-        <Typography
-          variant="h5"
-          color={message.length > 0 ? (isValid ? 'lightseagreen' : 'red') : ''}
-        >
-          {message}
-        </Typography>
+        {forMattedPhoneNumber ? (
+          <Typography variant="h5">
+            {forMattedPhoneNumber}
+          </Typography>
+        ) : null}
       </Grid>
     </Container>
   );

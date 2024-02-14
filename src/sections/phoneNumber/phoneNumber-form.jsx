@@ -23,6 +23,8 @@ const PhoneNumberForm = ({
   countryCode,
   onCountryCodeChange,
   error,
+  showDialCodeSelector = true,
+  utilName,
 }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -46,7 +48,7 @@ const PhoneNumberForm = ({
           ))}
         </Select>
         <FormHelperText>
-          isValidPhoneNumber expects the country code as second argument
+          {utilName} expects the country code as second argument
         </FormHelperText>
       </Grid>
 
@@ -65,7 +67,7 @@ const PhoneNumberForm = ({
             placeholder={localPhoneNumbersByDialCodeMap[dialCode]}
             error={error}
             InputProps={{
-              startAdornment: (
+              startAdornment: showDialCodeSelector ? (
                 <InputAdornment position="start">
                   <Select
                     fullWidth
@@ -80,13 +82,15 @@ const PhoneNumberForm = ({
                     ))}
                   </Select>
                 </InputAdornment>
-              ),
+              ) : null,
             }}
           />
-          <FormHelperText>
-            One dial code can be applied to multiple regions ex: +1 shared by countries like the
-            United States, Canada, Barbados, Bermuda
-          </FormHelperText>
+          {showDialCodeSelector ? (
+            <FormHelperText>
+              One dial code can be applied to multiple regions ex: +1 shared by countries like the
+              United States, Canada, Barbados, Bermuda
+            </FormHelperText>
+          ) : null}
         </Grid>
       </Grid>
     </>
