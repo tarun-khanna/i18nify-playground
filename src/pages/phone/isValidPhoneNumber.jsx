@@ -13,14 +13,14 @@ export default function IsValidPhoneNumberView() {
   const [countryCode, setCountryCode] = useState('IN');
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-  let message = '';
+  let errorMessage = '';
   const phoneNumber = inpValue.replaceAll(' ').replaceAll('-');
   const isValid = isValidPhoneNumber(`+${dialCode}${phoneNumber}`, countryCode);
   if (inpValue.length > 5) {
     if (isValid) {
-      message = 'Valid phone number';
+      errorMessage = 'Valid phone number';
     } else {
-      message = 'Invalid Phone Number';
+      errorMessage = 'Invalid Phone Number';
     }
   }
 
@@ -48,18 +48,10 @@ export default function IsValidPhoneNumberView() {
             onDialCodeChange={(val) => setDialCode(val)}
             countryCode={countryCode}
             onCountryCodeChange={(val) => setCountryCode(val)}
-            error={message.length > 0 ? !isValid : false}
+            errorMessage={errorMessage}
             utilName="isValidPhoneNumber"
           />
         </Grid>
-      </Grid>
-      <Grid item marginTop={3}>
-        <Typography
-          variant="h5"
-          color={message.length > 0 ? (isValid ? 'lightseagreen' : 'red') : ''}
-        >
-          {message}
-        </Typography>
       </Grid>
     </Container>
   );

@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import React from 'react';
 
 import {
@@ -26,12 +27,22 @@ const PhoneNumberForm = ({
   onDialCodeChange,
   countryCode,
   onCountryCodeChange,
-  error,
   showDialCodeSelector = true,
   utilName,
+  errorMessage,
 }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
+  const validatePhoneNumber = utilName === 'isValidPhoneNumber';
+  const isError = validatePhoneNumber ? errorMessage?.length > 1 : null;
+  const color = validatePhoneNumber
+    ? inpValue.length > 5
+      ? !isError
+        ? 'success'
+        : null
+      : null
+    : null;
 
   return (
     <>
@@ -46,19 +57,20 @@ const PhoneNumberForm = ({
           ) : null}
         </Grid>
         <Grid item xs={isMobile ? 12 : 10} marginTop={1}>
-          <Box display="flex" alignItems="center">
+          <Box display="flex" alignItems="flex-start">
             {showDialCodeSelector ? (
               <Select
                 size="small"
                 value={dialCode}
-                error={error}
+                error={isError}
+                color={color}
                 onChange={(ev) => onDialCodeChange(ev.target.value)}
                 sx={{
-                  height: '54px',
+                  height: '57px',
                   alignItems: 'center',
                   display: 'flex',
                   marginRight: 1,
-                  width: '190px',
+                  width: '130px',
                   justifyContent: 'center',
                 }}
               >
@@ -88,16 +100,33 @@ const PhoneNumberForm = ({
                 ))}
               </Select>
             ) : null}
-            <TextField
-              value={inpValue}
-              onChange={(ev) => {
-                onInpChange(ev.target.value);
-              }}
-              size="large"
-              fullWidth
-              placeholder={localPhoneNumbersByDialCodeMap[dialCode]}
-              error={error}
-            />
+            <Box fullWidth>
+              <TextField
+                value={inpValue}
+                onChange={(ev) => {
+                  onInpChange(ev.target.value);
+                }}
+                size="large"
+                fullWidth
+                placeholder={localPhoneNumbersByDialCodeMap[dialCode]}
+                error={isError}
+                color={color}
+              />
+              {validatePhoneNumber ? (
+                <Typography
+                  marginTop={1}
+                  color={color}
+                  variant="caption"
+                  display="block"
+                  gutterBottom
+                  sx={{
+                    visibility: isError ? 'visible' : 'none',
+                  }}
+                >
+                  {errorMessage}
+                </Typography>
+              ) : null}
+            </Box>
           </Box>
         </Grid>
       </Grid>
