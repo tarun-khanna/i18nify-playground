@@ -28,7 +28,7 @@ export default function IsValidPhoneNumberView() {
           </Typography>
         </Grid>
 
-        <Grid item xs={isMobile ? 12 : 7}>
+        <Grid item xs={isMobile ? 12 : 7}  sx={!isMobile && { 'border-right': '1px solid rgba(0,0,0,0.2)', pr: 2 }}>
           <PhoneNumberForm
             inpValue={inpValue}
             dialCode={dialCode}

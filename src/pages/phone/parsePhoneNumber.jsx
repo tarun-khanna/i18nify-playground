@@ -1,10 +1,23 @@
 import { useState } from 'react';
+import Editor from '@monaco-editor/react';
 import { parsePhoneNumber } from '@razorpay/i18nify-js/phoneNumber';
 
 import Container from '@mui/material/Container';
 import { Grid, useTheme, Typography, useMediaQuery } from '@mui/material';
 
 import PhoneNumberForm from 'src/sections/phoneNumber/phoneNumber-form';
+
+const CodeEditor = ({ value }) => {
+  return (
+    <Editor
+      theme="vs-dark"
+      defaultLanguage="json"
+      value={value}
+      options={{ minimap: { enabled: false } }}
+    />
+  );
+};
+
 // ----------------------------------------------------------------------
 
 export default function IsValidPhoneNumberView() {
@@ -12,13 +25,8 @@ export default function IsValidPhoneNumberView() {
   const [countryCode, setCountryCode] = useState('IN');
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-  const {
-    countryCode: parsedCountryCode,
-    dialCode,
-    formatTemplate,
-    formattedPhoneNumber,
-  } = inpValue > 5 ? parsePhoneNumber(`${inpValue}`) : {
-  };
+  const code = inpValue > 5 ? parsePhoneNumber(inpValue) : {};
+  const formattedCode = JSON.stringify(code, null, 2);
 
   return (
     <Container maxWidth="xl">
@@ -32,8 +40,16 @@ export default function IsValidPhoneNumberView() {
             🎩✨ This little util helps you validate the phone number values.🌟💸
           </Typography>
         </Grid>
-
-        <Grid item xs={isMobile ? 12 : 7}>
+        {isMobile && (
+          <Grid item xs={12}>
+            <Grid sx={{ height: '200px' }} container alignItems="center" justifyContent="center">
+              <Grid item sx={{ height: '200px', width: '100%', padding: '20px 0px' }}>
+                <CodeEditor value={formattedCode} />
+              </Grid>
+            </Grid>
+          </Grid>
+        )}
+        <Grid item xs={isMobile ? 12 : 7}   sx={!isMobile && { 'border-right': '1px solid rgba(0,0,0,0.2)', pr: 2 }}>
           <PhoneNumberForm
             inpValue={inpValue}
             onInpChange={(val) => setInpValue(val)}
@@ -43,12 +59,16 @@ export default function IsValidPhoneNumberView() {
             utilName="parsePhoneNumber"
           />
         </Grid>
-      </Grid>
-      <Grid item marginTop={3}>
-        <Typography variant="h5">Country Code: {parsedCountryCode}</Typography>
-        <Typography variant="h5">Dial Code: {dialCode}</Typography>
-        <Typography variant="h5">Format Template: {formatTemplate}</Typography>
-        <Typography variant="h5">Formatted PhoneNumber: {formattedPhoneNumber}</Typography>
+
+        {!isMobile && (
+          <Grid item xs={5}>
+            <Grid sx={{ height: '60vh' }} container alignItems="center" justifyContent="center">
+              <Grid item sx={{ height: '100%', width: '100%', padding: '0px 20px' }}>
+                <CodeEditor value={formattedCode} />
+              </Grid>
+            </Grid>
+          </Grid>
+        )}
       </Grid>
     </Container>
   );

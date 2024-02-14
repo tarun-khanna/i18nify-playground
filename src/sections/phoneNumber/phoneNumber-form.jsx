@@ -30,48 +30,31 @@ const PhoneNumberForm = ({
 
   return (
     <>
-      <Grid item xs={isMobile ? 5 : 4}>
-        <Typography variant="h5">Please select the country</Typography>
-      </Grid>
-      <Grid item xs={isMobile ? 7 : 6}>
-        <Select
-          fullWidth
-          size="small"
-          value={countryCode}
-          onChange={(ev) => onCountryCodeChange(ev.target.value)}
-        >
-          {Object.entries(countryCodeMap).map(([code, name]) => (
-            <MenuItem key={code} value={code}>
-              {name}
-            </MenuItem>
-          ))}
-        </Select>
-        <FormHelperText>{utilName} expects the country code as second argument</FormHelperText>
-      </Grid>
-
       <Grid container alignItems="center" marginTop={4}>
         <Grid item>
           <Typography variant="h5">Please enter phone number.</Typography>
         </Grid>
         <Grid item xs={isMobile ? 12 : 10}>
           <Box display="flex" alignItems="center">
-            <Select
-              size="small"
-              value={dialCode}
-              onChange={(ev) => onDialCodeChange(ev.target.value)}
-              sx={{
-                height: '54px',
-                alignItems: 'center',
-                display: 'flex',
-                marginRight: 1
-              }}
-            >
-              {Object.entries(dialCodeMap).map(([code, name]) => (
-                <MenuItem key={code} value={code}>
-                  + {code}
-                </MenuItem>
-              ))}
-            </Select>
+            {showDialCodeSelector ? (
+              <Select
+                size="small"
+                value={dialCode}
+                onChange={(ev) => onDialCodeChange(ev.target.value)}
+                sx={{
+                  height: '54px',
+                  alignItems: 'center',
+                  display: 'flex',
+                  marginRight: 1,
+                }}
+              >
+                {Object.entries(dialCodeMap).map(([code, name]) => (
+                  <MenuItem key={code} value={code}>
+                    + {code}
+                  </MenuItem>
+                ))}
+              </Select>
+            ) : null}
             <TextField
               value={inpValue}
               onChange={(ev) => {
@@ -90,6 +73,28 @@ const PhoneNumberForm = ({
             </FormHelperText>
           ) : null}
         </Grid>
+      </Grid>
+
+      <Grid item xs={isMobile ? 5 : 8} marginTop={3}>
+        <Typography variant="h5">Please select the country</Typography>
+        <FormHelperText>
+          {utilName} expects the country code as second argument, this is not mandatory. i18nify all
+          ways take the dial code as secondary priority
+        </FormHelperText>
+      </Grid>
+      <Grid item xs={isMobile ? 7 : 6} marginTop={1}>
+        <Select
+          fullWidth
+          size="small"
+          value={countryCode}
+          onChange={(ev) => onCountryCodeChange(ev.target.value)}
+        >
+          {Object.entries(countryCodeMap).map(([code, name]) => (
+            <MenuItem key={code} value={code}>
+              {name}
+            </MenuItem>
+          ))}
+        </Select>
       </Grid>
     </>
   );
