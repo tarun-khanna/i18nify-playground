@@ -1,20 +1,37 @@
-
-import { isValidPhoneNumber } from '@razorpay/i18nify-js/phoneNumber';
 import { useState } from 'react';
+import { isValidPhoneNumber } from '@razorpay/i18nify-js/phoneNumber';
+
 import Container from '@mui/material/Container';
 import { Grid, useTheme, Typography, useMediaQuery } from '@mui/material';
-
-import { useIntlOptionsContext } from 'src/context/intlOptionsContext';
 
 import PhoneNumberForm from 'src/sections/phoneNumber/phoneNumber-form';
 // ----------------------------------------------------------------------
 
 export default function IsValidPhoneNumberView() {
   const [inpValue, setInpValue] = useState('');
-  const { intlOptions } = useIntlOptionsContext();
+  const [countryCode, setCountryCode] = useState('IN');
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  let message = '';
+  let isValid = false;
+  if (inpValue.length > 5) {
+    const phoneNumber = inpValue.replaceAll(' ', '').replaceAll('-', '');
+    console.log(phoneNumber, countryCode, isValidPhoneNumber(phoneNumber, countryCode));
+    if (isValidPhoneNumber(phoneNumber, countryCode)) {
+      message = 'Valid phone number';
+      isValid = true;
+    } else {
+      message = 'Invalid Phone Number';
+      isValid = false;
+    }
+  }
 
+  const MessageComponent = (
+    // eslint-disable-next-line no-nested-ternary
+    <Typography variant="h2" color={message.length > 0 ? (isValid ? 'lightseagreen' : 'red') : ''}>
+      {message}
+    </Typography>
+  );
   return (
     <Container maxWidth="xl">
       <Grid container>
@@ -27,17 +44,15 @@ export default function IsValidPhoneNumberView() {
             🎩✨ This little util helps you validate the phone number values.🌟💸
           </Typography>
         </Grid>
+
         {isMobile && (
           <Grid item xs={12}>
             <Grid sx={{ height: '100px' }} container alignItems="center" justifyContent="center">
-              <Grid item>
-                <Typography variant="h2">
-                  {isValidPhoneNumber()}
-                </Typography>
-              </Grid>
+              <Grid item>{MessageComponent}</Grid>
             </Grid>
           </Grid>
         )}
+
         <Grid
           item
           xs={isMobile ? 12 : 7}
@@ -45,15 +60,16 @@ export default function IsValidPhoneNumberView() {
         >
           <PhoneNumberForm
             inpValue={inpValue}
+            countryCode={countryCode}
             onInpChange={(val) => setInpValue(val)}
+            onCountryCodeChange={(val) => setCountryCode(val)}
           />
         </Grid>
+
         {!isMobile && (
           <Grid item xs={5}>
             <Grid sx={{ height: '60vh' }} container alignItems="center" justifyContent="center">
-              <Grid item>
-                <Typography variant="h2" />
-              </Grid>
+              <Grid item>{MessageComponent}</Grid>
             </Grid>
           </Grid>
         )}
