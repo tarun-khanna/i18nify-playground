@@ -8,6 +8,8 @@ import { Grid, useTheme, Typography, useMediaQuery } from '@mui/material';
 import { removeEmptyValues } from 'src/utils';
 import { useIntlOptionsDateContext } from 'src/context/intlOptionsDateContext';
 
+import IntlOptionsDateForm from 'src/components/intlOptionsDateForm';
+
 // ----------------------------------------------------------------------
 
 const CodeEditor = ({ value }) => {
@@ -27,7 +29,7 @@ export default function GetWeekdays() {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const code = JSON.stringify(
-    getWeekdays({ intlOptions: removeEmptyValues(intlDateOptions) }),
+    getWeekdays({ intlOptions: {weekday: removeEmptyValues(intlDateOptions).weekday }}),
     null,
     2
   );
@@ -58,6 +60,13 @@ export default function GetWeekdays() {
             </Grid>
           </Grid>
         )}
+         <Grid
+          item
+          xs={isMobile ? 12 : 7}
+          sx={!isMobile && { 'border-right': '1px solid rgba(0,0,0,0.2)', pr: 2 }}
+        >
+          <IntlOptionsDateForm utilName="getWeekdays"/>
+        </Grid>
         {!isMobile && (
           <Grid item xs={5}>
             <Grid sx={{ height: '60vh' }} container alignItems="center" justifyContent="center">

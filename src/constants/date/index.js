@@ -25,6 +25,7 @@ export const DATE_FORMAT_INTL_INPUTS = [
       'roc',
       'islamic-civil',
     ],
+    defaultValue: 'gregory',
   },
   {
     key: 'numberingSystem',
@@ -125,6 +126,7 @@ export const DATE_FORMAT_INTL_INPUTS = [
       'wara',
       'wcho',
     ],
+    defaultValue: 'latn',
   },
   {
     key: 'hourCycle',
@@ -132,12 +134,13 @@ export const DATE_FORMAT_INTL_INPUTS = [
     type: 'select',
     supportedUtilName: ['formatDateTime', 'formatTime'],
     options: ['h12', 'h24'],
+    defaultValue: 'h12',
   },
   {
     key: 'weekday',
     label: 'Weekday',
     type: 'select',
-    supportedUtilName: ['formatDate', 'formatDateTime', 'formatTime', 'parseDateTime'],
+    supportedUtilName: ['formatDate', 'formatDateTime', 'formatTime', 'parseDateTime', 'getWeekdays'],
     options: ['long', 'short', 'narrow'],
   },
   {
@@ -146,6 +149,7 @@ export const DATE_FORMAT_INTL_INPUTS = [
     type: 'select',
     supportedUtilName: ['formatDate', 'formatDateTime', 'formatTime', 'parseDateTime'],
     options: ['numeric', '2-digit'],
+    defaultValue: 'numeric',
   },
   {
     key: 'month',
@@ -153,6 +157,7 @@ export const DATE_FORMAT_INTL_INPUTS = [
     type: 'select',
     supportedUtilName: ['formatDate', 'formatDateTime', 'formatTime', 'parseDateTime'],
     options: ['numeric', '2-digit', 'long', 'short', 'narrow'],
+    defaultValue: 'numeric',
   },
   {
     key: 'day',
@@ -160,6 +165,7 @@ export const DATE_FORMAT_INTL_INPUTS = [
     type: 'select',
     supportedUtilName: ['formatDate', 'formatDateTime', 'formatTime', 'parseDateTime'],
     options: ['numeric', '2-digit'],
+    defaultValue: 'numeric',
   },
   {
     key: 'dayPeriod',
@@ -174,6 +180,7 @@ export const DATE_FORMAT_INTL_INPUTS = [
     type: 'select',
     supportedUtilName: ['formatDate', 'formatDateTime', 'formatTime', 'parseDateTime'],
     options: ['numeric', '2-digit'],
+    defaultValue: 'numeric',
   },
   {
     key: 'minute',
@@ -181,6 +188,7 @@ export const DATE_FORMAT_INTL_INPUTS = [
     type: 'select',
     supportedUtilName: ['formatDate', 'formatDateTime', 'formatTime', 'parseDateTime'],
     options: ['numeric', '2-digit'],
+    defaultValue: 'numeric',
   },
   {
     key: 'second',
@@ -188,13 +196,14 @@ export const DATE_FORMAT_INTL_INPUTS = [
     type: 'select',
     supportedUtilName: ['formatDate', 'formatDateTime', 'formatTime', 'parseDateTime'],
     options: ['numeric', '2-digit'],
+    defaultValue: 'numeric',
   },
   {
     key: 'fractionalSecondDigits',
     label: 'Fractional Second Digits',
-    options: [1, 2, 3],
-    supportedUtilName: ['formatDateTime', 'formatTime', 'parseDateTime'],
     type: 'select',
+    supportedUtilName: ['formatDateTime', 'formatTime', 'parseDateTime'],
+    options: [1, 2, 3],
   },
   {
     key: 'timeZoneName',
