@@ -16,7 +16,7 @@ const navConfig = [
     icon: icon('ic_home'),
   },
   {
-    title: 'Number',
+    title: 'Currency & Number',
     path: '/number',
     icon: icon('ic_currency'),
     children: [

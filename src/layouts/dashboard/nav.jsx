@@ -1,12 +1,13 @@
 import PropTypes from 'prop-types';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
-import { useEffect, useState } from 'react';
 
 import Box from '@mui/material/Box';
+import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import Drawer from '@mui/material/Drawer';
 import { alpha } from '@mui/material/styles';
-import { Collapse, List } from '@mui/material';
+import { List, Collapse } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import ListItemButton from '@mui/material/ListItemButton';
 
@@ -24,7 +25,6 @@ import navConfig from './config-navigation';
 
 export default function Nav({ openNav, onCloseNav }) {
   const pathname = usePathname();
-  const navigate = useNavigate();
 
   const upLg = useResponsive('up', 'lg');
 
@@ -36,24 +36,20 @@ export default function Nav({ openNav, onCloseNav }) {
   }, [pathname]);
 
   const renderBadge = (
-    <Box
+    <Link
       sx={{
-        my: 3,
-        mx: 2.5,
-        py: 2,
-        px: 2.5,
+        mx: 3,
+        my: 2.5,
         display: 'flex',
-        borderRadius: 1.5,
         alignItems: 'center',
-        bgcolor: (theme) => alpha(theme.palette.grey[500], 0.12),
         cursor: 'pointer',
+        justifyContent: 'center',
       }}
-      onClick={() => {
-        navigate('/');
-      }}
+      href="https://razorpay.com"
+      target="_blank"
     >
-      <Typography variant="h5">@razorpay/i18nify-js</Typography>
-    </Box>
+      <img src="/i18nify-playground/assets/rzp.svg" height="35px" alt="Razorpay" />
+    </Link>
   );
 
   const renderMenu = (
