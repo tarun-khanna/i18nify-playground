@@ -9,7 +9,7 @@ import navConfig from 'src/layouts/dashboard/config-navigation';
 
 export default function NumberView() {
   const navigate = useNavigate();
-  const numberLinks = navConfig.find((item) => item.title.toLowerCase() === 'number').children;
+  const numberLinks = navConfig.find((item) => item.path.toLowerCase().includes('number')).children;
 
   return (
     <Container maxWidth="xl">
