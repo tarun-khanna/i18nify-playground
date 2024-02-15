@@ -33,17 +33,6 @@ export default function IsValidDate() {
             versatile tool in your date validation arsenal. 🌍⏳
           </Typography>
         </Grid>
-        {isMobile && (
-          <Grid item xs={12}>
-            <Grid sx={{ height: '100px' }} container alignItems="center" justifyContent="center">
-              <Grid item>
-                <Typography variant="h2" sx={{ color: isValid ? 'green' : 'red' }}>
-                  {isValid.toString()}
-                </Typography>
-              </Grid>
-            </Grid>
-          </Grid>
-        )}
         <Grid
           item
           xs={isMobile ? 12 : 7}
