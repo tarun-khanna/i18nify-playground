@@ -67,9 +67,9 @@ export default function GetRelativeTime() {
         </Grid>
         {!isMobile && (
           <Grid item xs={5}>
-            <Grid  sx={{ height: '60vh' }}  container alignItems="center" justifyContent="center">
+            <Grid sx={{ height: '30vh' }} container alignItems="center" justifyContent="center">
               <Grid item>
-                <Typography variant="h4">
+                <Typography variant="h3">
                   {getRelativeTime(new Date(inpValue), new Date(), {
                     locale,
                     intlOptions: removeEmptyValues(intlDateOptions),

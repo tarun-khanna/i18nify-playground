@@ -68,7 +68,7 @@ export default function FormatDate() {
           <Grid item xs={5}>
             <Grid sx={{ height: '60vh' }} container alignItems="center" justifyContent="center">
               <Grid item>
-                <Typography variant="h3">
+                <Typography variant="h2">
                   {formatDate(new Date(inpValue), {
                     locale,
                     intlOptions: removeEmptyValues(intlDateOptions),

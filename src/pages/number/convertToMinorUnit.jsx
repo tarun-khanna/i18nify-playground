@@ -58,7 +58,7 @@ export default function ConvertToMinorUnit() {
         </Grid>
         {!isMobile && (
           <Grid item xs={5}>
-            <Grid container alignItems="center" justifyContent="center">
+            <Grid  sx={{ height: '30vh' }} container alignItems="center" justifyContent="center">
               <Grid item>
                 <Typography variant="h2">
                   {convertToMinorUnit(inpValue, {
