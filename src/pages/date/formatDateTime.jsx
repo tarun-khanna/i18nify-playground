@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { formatDateTime } from 'i18nify-date';
+import { formatDateTime } from '@razorpay/i18nify-js';
 
 import dayjs from 'dayjs';
 import Container from '@mui/material/Container';
@@ -41,7 +41,10 @@ export default function FormatDateTime() {
             <Grid sx={{ height: '100px' }} container alignItems="center" justifyContent="center">
               <Grid item>
                 <Typography variant="h2">
-                  {formatDateTime(new Date(inpValue), { locale, intlOptions: removeEmptyValues(intlDateOptions) })}
+                  {formatDateTime(new Date(inpValue), {
+                    locale,
+                    intlOptions: removeEmptyValues(intlDateOptions),
+                  })}
                 </Typography>
               </Grid>
             </Grid>
@@ -63,9 +66,14 @@ export default function FormatDateTime() {
         </Grid>
         {!isMobile && (
           <Grid item xs={5}>
-            <Grid container alignItems="center" justifyContent="center">
+            <Grid sx={{ height: '60vh' }}  container alignItems="center" justifyContent="center">
               <Grid item>
-                <Typography variant="h2">{formatDateTime(new Date(inpValue), { locale, intlOptions: removeEmptyValues(intlDateOptions) })}</Typography>
+                <Typography variant="h4">
+                  {formatDateTime(new Date(inpValue), {
+                    locale,
+                    intlOptions: removeEmptyValues(intlDateOptions),
+                  })}
+                </Typography>
               </Grid>
             </Grid>
           </Grid>

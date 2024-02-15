@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { getRelativeTime } from 'i18nify-date';
+import { getRelativeTime } from '@razorpay/i18nify-js';
 
 import dayjs from 'dayjs';
 import Container from '@mui/material/Container';
@@ -41,7 +41,12 @@ export default function GetRelativeTime() {
           <Grid item xs={12}>
             <Grid sx={{ height: '100px' }} container alignItems="center" justifyContent="center">
               <Grid item>
-                <Typography variant="h2">{getRelativeTime(new Date(inpValue), new Date(), { locale, intlOptions: removeEmptyValues(intlDateOptions) })}</Typography>
+                <Typography variant="h2">
+                  {getRelativeTime(new Date(inpValue), new Date(), {
+                    locale,
+                    intlOptions: removeEmptyValues(intlDateOptions),
+                  })}
+                </Typography>
               </Grid>
             </Grid>
           </Grid>
@@ -62,9 +67,14 @@ export default function GetRelativeTime() {
         </Grid>
         {!isMobile && (
           <Grid item xs={5}>
-            <Grid container alignItems="center" justifyContent="center">
+            <Grid  sx={{ height: '60vh' }}  container alignItems="center" justifyContent="center">
               <Grid item>
-                <Typography variant="h2">{getRelativeTime(new Date(inpValue), new Date(), { locale, intlOptions: removeEmptyValues(intlDateOptions) })}</Typography>
+                <Typography variant="h4">
+                  {getRelativeTime(new Date(inpValue), new Date(), {
+                    locale,
+                    intlOptions: removeEmptyValues(intlDateOptions),
+                  })}
+                </Typography>
               </Grid>
             </Grid>
           </Grid>

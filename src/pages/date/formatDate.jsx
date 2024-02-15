@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { formatDate } from 'i18nify-date';
+import { formatDate } from '@razorpay/i18nify-js';
 
 import dayjs from 'dayjs';
 import Container from '@mui/material/Container';
@@ -66,9 +66,9 @@ export default function FormatDate() {
         </Grid>
         {!isMobile && (
           <Grid item xs={5}>
-            <Grid container alignItems="center" justifyContent="center">
+            <Grid sx={{ height: '60vh' }} container alignItems="center" justifyContent="center">
               <Grid item>
-                <Typography variant="h2">
+                <Typography variant="h3">
                   {formatDate(new Date(inpValue), {
                     locale,
                     intlOptions: removeEmptyValues(intlDateOptions),

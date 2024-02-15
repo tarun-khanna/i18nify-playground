@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { getWeekdays } from 'i18nify-date';
+import { getWeekdays } from '@razorpay/i18nify-js';
 import Editor from '@monaco-editor/react';
 
 import Container from '@mui/material/Container';

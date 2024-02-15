@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { parseDateTime } from 'i18nify-date';
+import { parseDateTime } from '@razorpay/i18nify-js';
 import Editor from '@monaco-editor/react';
 
 import dayjs from 'dayjs';

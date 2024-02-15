@@ -1,15 +1,21 @@
 import { useState } from 'react';
-import { isValidDate } from 'i18nify-date';
+import { isValidDate } from '@razorpay/i18nify-js';
+import dayjs from 'dayjs';
 
 import Container from '@mui/material/Container';
 import { Grid, useTheme, Typography, useMediaQuery, TextField } from '@mui/material';
 
+import DateForm from 'src/sections/date/date-form';
+
 // ----------------------------------------------------------------------
 
 export default function IsValidDate() {
-  const [inpValue, setInpValue] = useState('');
+  const [inpValue, setInpValue] = useState(dayjs(new Date()));
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
+  const isValid = isValidDate(`${new Date(inpValue)}`);
+  const infoMessage = isValid ? 'Valid Date' : 'Invalid Date';
 
   return (
     <Container maxWidth="xl">
@@ -31,8 +37,8 @@ export default function IsValidDate() {
           <Grid item xs={12}>
             <Grid sx={{ height: '100px' }} container alignItems="center" justifyContent="center">
               <Grid item>
-                <Typography variant="h2" sx={{ color: isValidDate(inpValue) ? 'green' : 'red' }}>
-                  {isValidDate(inpValue).toString()}
+                <Typography variant="h2" sx={{ color: isValid ? 'green' : 'red' }}>
+                  {isValid.toString()}
                 </Typography>
               </Grid>
             </Grid>
@@ -41,31 +47,18 @@ export default function IsValidDate() {
         <Grid
           item
           xs={isMobile ? 12 : 7}
-          sx={!isMobile && { 'border-right': '1px solid rgba(0,0,0,0.2)', pr: 2 }}
         >
-          <Grid container rowSpacing={5} alignItems="center">
-            <Grid item xs={isMobile ? 12 : 10} sx={{ mb: 2 }}>
-              <TextField
-                id="isValidDate"
-                variant="outlined"
-                color={inpValue ? (isValidDate(inpValue) ? 'success' : 'error') : ''}
-                value={inpValue}
-                onChange={(e) => setInpValue(e.target.value)}
-              />
-            </Grid>
-          </Grid>
+          <DateForm
+            infoMessage={infoMessage}
+            isValid={isValid}
+            utilName="isValidDate"
+            inpValue={dayjs(inpValue)}
+            onInpChange={(val) => {
+              setInpValue(dayjs(new Date(val)));
+            }}
+            includeIntlOptions={false}
+          />
         </Grid>
-        {!isMobile && (
-          <Grid item xs={5}>
-            <Grid container alignItems="center" justifyContent="center">
-              <Grid item>
-                <Typography variant="h2" sx={{ color: isValidDate(inpValue) ? 'green' : 'red' }}>
-                  {isValidDate(inpValue).toString()}
-                </Typography>
-              </Grid>
-            </Grid>
-          </Grid>
-        )}
       </Grid>
     </Container>
   );
