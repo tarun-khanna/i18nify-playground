@@ -1,11 +1,40 @@
-import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 
-import { Box, Grid, Link, Container, Typography } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+import { Box, Grid, Link, Container, Typography, useMediaQuery } from '@mui/material';
+
+function generateRandomColor() {
+  const colorList = [
+    '#305EFF',
+    '#FF5733',
+    '#C70039',
+    '#900C3F',
+    '#581845',
+    '#FFC300',
+    '#FF5733',
+    '#C70039',
+    '#900C3F',
+  ];
+  const randomIndex = Math.floor(Math.random() * colorList.length);
+  return colorList[randomIndex];
+}
 
 const Home = () => {
+  const [color, setColor] = useState('#305EFF');
   const navigate = useNavigate();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setColor(generateRandomColor());
+    }, 2000);
+
+    // Clear interval on component unmount
+    return () => clearInterval(intervalId);
+  }, []);
 
   return (
     <Container maxWidth="xl">
@@ -13,13 +42,22 @@ const Home = () => {
         <title> i18nify </title>
       </Helmet>
       <Grid container>
-        <Typography color="#fcbe11" sx={{ mb: 2 }} variant="h2">
-          Welcome to i18nify !
+        <Typography
+          sx={{
+            mb: 2,
+            fontSize: '72px',
+            fontStyle: 'normal',
+            lineHeight: '78px',
+            color,
+          }}
+          variant="h1"
+        >
+          Welcome to Geo Smart !
         </Typography>
 
-        <Grid item xs={9} sx={{ mb: 2 }}>
+        <Grid item xs={12} sm={9} sx={{ mb: 2 }}>
           <Typography variant="body1">
-            A one-stop solution built in javascript to provide internationalization support. Hey,
+            A one-stop solution built in javascript for all your internationalization needs. Hey,
             dive into this JavaScript toolkit—it’s like having a magic kit for your app! 🪄✨
             Picture this: modules for phoneNumber, currency, date—they’re like enchanted tools that
             make your app talk fluently in any language, anywhere! It’s your ticket to making your
@@ -28,72 +66,92 @@ const Home = () => {
           </Typography>
         </Grid>
 
-        <Grid item xs={12} sx={{ mb: 3 }}>
-          <Typography variant="h3" sx={{ mb: 1 }}>
-            Modules
-          </Typography>
-          <Box>
-            <Link
-              color="#4767FD"
-              component="button"
-              underline="none"
-              onClick={() => navigate('/number')}
-            >
-              Number module
-            </Link>
-          </Box>
-          <Box>
-            <Link
-              color="#4767FD"
-              component="button"
-              underline="none"
-              onClick={() => navigate('/phone')}
-            >
-              Phone number module
-            </Link>
-          </Box>
-          <Box>
-            <Link
-              color="#4767FD"
-              component="button"
-              underline="none"
-              onClick={() => navigate('/date')}
-            >
-              Date module
-            </Link>
-          </Box>
-          <Box>
-            <Link
-              color="#4767FD"
-              component="button"
-              underline="none"
-              onClick={() => navigate('/state')}
-            >
-              Core State module
-            </Link>
-          </Box>
-        </Grid>
+        <Grid container sx={{ mb: 6 }}>
+          <Grid item xs={12} sm={6}>
+            <Grid item xs={12} sx={{ mb: 3 }}>
+              <Typography variant="h3" sx={{ mb: 1 }}>
+                Modules
+              </Typography>
+              <Box>
+                <Link
+                  color="#2950DA"
+                  component="button"
+                  underline="none"
+                  onClick={() => navigate('/number')}
+                >
+                  Number
+                </Link>
+              </Box>
+              <Box>
+                <Link
+                  color="#2950DA"
+                  component="button"
+                  underline="none"
+                  onClick={() => navigate('/phone')}
+                >
+                  Phone Number
+                </Link>
+              </Box>
+              <Box>
+                <Link
+                  color="#2950DA"
+                  component="button"
+                  underline="none"
+                  onClick={() => navigate('/date')}
+                >
+                  Date
+                </Link>
+              </Box>
+              <Box>
+                <Link
+                  color="#2950DA"
+                  component="button"
+                  underline="none"
+                  onClick={() => navigate('/state')}
+                >
+                  Core State module
+                </Link>
+              </Box>
+            </Grid>
 
-        <Grid item xs={12} sx={{ mb: 3 }}>
-          <Typography variant="h3" sx={{ mb: 1 }}>
-            Plugins
-          </Typography>
-          <Box>
-            <Link component="button" underline="none" onClick={() => navigate('/plugins')}>
-              i18nify-react
-            </Link>
-          </Box>
-        </Grid>
+            <Grid item xs={12} sx={{ mb: 3 }}>
+              <Typography variant="h3" sx={{ mb: 1 }} fontWeight="600">
+                Plugins
+              </Typography>
+              <Box>
+                <Link
+                  component="button"
+                  underline="none"
+                  onClick={() => navigate('/plugins')}
+                  color="#2950DA"
+                >
+                  i18nify-react
+                </Link>
+              </Box>
+            </Grid>
 
-        <Grid item xs={12} sx={{ mb: 3 }}>
-          <Typography variant="h3" sx={{ mb: 1 }}>
-            Polyfills
-          </Typography>
-          <Box>
-            <Link component="button" underline="none" onClick={() => navigate('/plugins')}>
-              FormatNumberByParts
-            </Link>
-          </Box>
+            <Grid item xs={12} sx={{ mb: 3 }}>
+              <Typography variant="h3" sx={{ mb: 1 }} fontWeight="600">
+                Polyfills
+              </Typography>
+              <Box>
+                <Link
+                  component="button"
+                  underline="none"
+                  onClick={() => navigate('/plugins')}
+                  color="#2950DA"
+                >
+                  FormatNumberByParts
+                </Link>
+              </Box>
+            </Grid>
+          </Grid>
+
+          {!isMobile && (
+            <Grid item xs={12} sm={6}>
+              <img height="390px" src="/i18nify-playground/assets/world_rotating.gif" alt="globe" />{' '}
+            </Grid>
+          )}
         </Grid>
       </Grid>
     </Container>

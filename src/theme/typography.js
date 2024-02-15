@@ -22,8 +22,8 @@ export function responsiveFontSizes({ sm, md, lg }) {
   };
 }
 
-export const primaryFont = 'Public Sans, sans-serif';
-export const secondaryFont = 'Barlow, sans-serif';
+export const primaryFont = `"TASA Orbiter", -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif`;
+export const secondaryFont = `"Inter", -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif`;
 
 // ----------------------------------------------------------------------
 
@@ -74,23 +74,28 @@ export const typography = {
     fontWeight: 600,
     lineHeight: 1.5,
     fontSize: pxToRem(16),
+    fontFamily: secondaryFont,
   },
   subtitle2: {
     fontWeight: 600,
     lineHeight: 22 / 14,
     fontSize: pxToRem(14),
+    fontFamily: secondaryFont,
   },
   body1: {
     lineHeight: 1.5,
     fontSize: pxToRem(16),
+    fontFamily: secondaryFont,
   },
   body2: {
     lineHeight: 22 / 14,
     fontSize: pxToRem(14),
+    fontFamily: secondaryFont,
   },
   caption: {
     lineHeight: 1.5,
     fontSize: pxToRem(12),
+    fontFamily: secondaryFont,
   },
   overline: {
     fontWeight: 700,
@@ -103,5 +108,6 @@ export const typography = {
     lineHeight: 24 / 14,
     fontSize: pxToRem(14),
     textTransform: 'unset',
+    fontFamily: secondaryFont,
   },
 };

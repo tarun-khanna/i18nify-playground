@@ -4,6 +4,7 @@ import { useScrollToTop } from 'src/hooks/use-scroll-to-top';
 
 import Router from 'src/routes/sections';
 import ThemeProvider from 'src/theme';
+// import Footer from './layouts/footer';
 
 // ----------------------------------------------------------------------
 
@@ -13,6 +14,7 @@ export default function App() {
   return (
     <ThemeProvider>
       <Router />
+      {/* <Footer /> */}
     </ThemeProvider>
   );
 }

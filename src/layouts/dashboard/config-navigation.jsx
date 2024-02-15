@@ -16,7 +16,7 @@ const navConfig = [
     icon: icon('ic_home'),
   },
   {
-    title: 'Number',
+    title: 'Currency & Number',
     path: '/number',
     icon: icon('ic_currency'),
     children: [
@@ -42,6 +42,15 @@ const navConfig = [
     title: 'Date',
     path: '/date',
     icon: icon('ic_date'),
+    children: [
+      { title: 'FormatDate', path: '/date/formatDate' },
+      { title: 'FormatDateTime', path: '/date/formatDateTime' },
+      { title: 'FormatTime', path: '/date/formatTime' },
+      { title: 'GetRelativeTime', path: '/date/getRelativeTime' },
+      { title: 'GetWeekdays', path: '/date/getWeekdays' },
+      { title: 'IsValidDate', path: '/date/isValidDate' },
+      { title: 'ParseDateTime', path: '/date/parseDateTime' },
+    ],
   },
   {
     title: 'Geo',

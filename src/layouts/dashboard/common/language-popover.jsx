@@ -1,11 +1,19 @@
-import Box from '@mui/material/Box';
-import MenuItem from '@mui/material/MenuItem';
-import { LANGS } from 'src/constants/locale';
-import { Select } from '@mui/material';
+import { useEffect } from 'react';
 import { useI18nContext } from '@razorpay/i18nify-react';
+
+import Box from '@mui/material/Box';
+import { Select, MenuItem } from '@mui/material';
+
+import { LANGS } from 'src/constants/locale';
 
 export default function LanguagePopover() {
   const { setI18nState, i18nState } = useI18nContext();
+
+  useEffect(() =>{
+    if (i18nState.locale.length === 0) {
+      setI18nState( { locale: 'en-IN' });
+    }
+  }, [i18nState, setI18nState]);
 
   return (
     <Select
