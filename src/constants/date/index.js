@@ -140,7 +140,13 @@ export const DATE_FORMAT_INTL_INPUTS = [
     key: 'weekday',
     label: 'Weekday',
     type: 'select',
-    supportedUtilName: ['formatDate', 'formatDateTime', 'formatTime', 'parseDateTime', 'getWeekdays'],
+    supportedUtilName: [
+      'formatDate',
+      'formatDateTime',
+      'formatTime',
+      'parseDateTime',
+      'getWeekdays',
+    ],
     options: ['long', 'short', 'narrow'],
   },
   {
