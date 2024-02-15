@@ -7,6 +7,7 @@ import { Grid, useTheme, Typography, useMediaQuery } from '@mui/material';
 
 import { removeEmptyValues } from 'src/utils';
 import { useIntlOptionsDateContext } from 'src/context/intlOptionsDateContext';
+import { useLocaleContext } from 'src/context/localeContext';
 
 import DateForm from 'src/sections/date/date-form';
 
@@ -17,6 +18,7 @@ export default function FormatDate() {
   const { intlDateOptions } = useIntlOptionsDateContext();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const { locale } = useLocaleContext();
 
   return (
     <Container maxWidth="xl">
@@ -40,6 +42,7 @@ export default function FormatDate() {
               <Grid item>
                 <Typography variant="h2">
                   {formatDate(new Date(inpValue), {
+                    locale,
                     intlOptions: removeEmptyValues(intlDateOptions),
                   })}
                 </Typography>
@@ -67,6 +70,7 @@ export default function FormatDate() {
               <Grid item>
                 <Typography variant="h2">
                   {formatDate(new Date(inpValue), {
+                    locale,
                     intlOptions: removeEmptyValues(intlDateOptions),
                   })}
                 </Typography>

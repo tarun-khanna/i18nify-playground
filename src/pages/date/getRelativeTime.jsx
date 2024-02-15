@@ -7,6 +7,7 @@ import { Grid, useTheme, Typography, useMediaQuery } from '@mui/material';
 
 import { removeEmptyValues } from 'src/utils';
 import { useIntlOptionsDateContext } from 'src/context/intlOptionsDateContext';
+import { useLocaleContext } from 'src/context/localeContext';
 
 import DateForm from 'src/sections/date/date-form';
 
@@ -17,6 +18,7 @@ export default function GetRelativeTime() {
   const { intlDateOptions } = useIntlOptionsDateContext();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const { locale } = useLocaleContext();
 
   return (
     <Container maxWidth="xl">
@@ -39,7 +41,7 @@ export default function GetRelativeTime() {
           <Grid item xs={12}>
             <Grid sx={{ height: '100px' }} container alignItems="center" justifyContent="center">
               <Grid item>
-                <Typography variant="h2">{getRelativeTime(new Date(inpValue), new Date(), { intlOptions: removeEmptyValues(intlDateOptions) })}</Typography>
+                <Typography variant="h2">{getRelativeTime(new Date(inpValue), new Date(), { locale, intlOptions: removeEmptyValues(intlDateOptions) })}</Typography>
               </Grid>
             </Grid>
           </Grid>
@@ -62,7 +64,7 @@ export default function GetRelativeTime() {
           <Grid item xs={5}>
             <Grid container alignItems="center" justifyContent="center">
               <Grid item>
-                <Typography variant="h2">{getRelativeTime(new Date(inpValue), new Date(), { intlOptions: removeEmptyValues(intlDateOptions) })}</Typography>
+                <Typography variant="h2">{getRelativeTime(new Date(inpValue), new Date(), { locale, intlOptions: removeEmptyValues(intlDateOptions) })}</Typography>
               </Grid>
             </Grid>
           </Grid>

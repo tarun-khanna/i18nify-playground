@@ -4,8 +4,6 @@ import { isValidDate } from 'i18nify-date';
 import Container from '@mui/material/Container';
 import { Grid, useTheme, Typography, useMediaQuery, TextField } from '@mui/material';
 
-import DateForm from 'src/sections/date/date-form';
-
 // ----------------------------------------------------------------------
 
 export default function IsValidDate() {

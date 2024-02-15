@@ -7,6 +7,7 @@ import { Grid, useTheme, Typography, useMediaQuery } from '@mui/material';
 
 import { removeEmptyValues } from 'src/utils';
 import { useIntlOptionsDateContext } from 'src/context/intlOptionsDateContext';
+import { useLocaleContext } from 'src/context/localeContext';
 
 import IntlOptionsDateForm from 'src/components/intlOptionsDateForm';
 
@@ -27,9 +28,10 @@ export default function GetWeekdays() {
   const { intlDateOptions } = useIntlOptionsDateContext();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const { locale } = useLocaleContext();
 
   const code = JSON.stringify(
-    getWeekdays({ intlOptions: {weekday: removeEmptyValues(intlDateOptions).weekday }}),
+    getWeekdays({locale, intlOptions: {weekday: removeEmptyValues(intlDateOptions).weekday }}),
     null,
     2
   );
