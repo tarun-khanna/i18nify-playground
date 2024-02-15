@@ -3,6 +3,7 @@ import { getFlagByCountry } from '@razorpay/i18nify-js';
 
 import Container from '@mui/material/Container';
 import { Grid, useTheme, Typography, useMediaQuery, Select, MenuItem, Box } from '@mui/material';
+import SVG from 'react-inlinesvg';
 
 import { countryCodeMap } from 'src/sections/phoneNumber/data/phoneNumber';
 
@@ -16,7 +17,6 @@ export default function GetFlagByCountry() {
 
   useEffect(() => {
     getFlagByCountry(countryCode).then((data) => {
-        console.log(data);
       setInpValue(data);
     });
   }, [countryCode]);
@@ -41,8 +41,17 @@ export default function GetFlagByCountry() {
 
         {isMobile && (
           <Grid item xs={12}>
-            <Grid sx={{ height: '100px' }} container alignItems="center" justifyContent="center">
-              <Grid item>{inpValue}
+            <Grid
+              sx={{
+                height: '100px',
+                'margin-bottom': '130px',
+              }}
+              container
+              alignItems="center"
+              justifyContent="center"
+            >
+              <Grid item>
+                <SVG src={inpValue} width="100%" height="auto" title={countryCode} />
               </Grid>
             </Grid>
           </Grid>
@@ -58,11 +67,8 @@ export default function GetFlagByCountry() {
             onChange={(e) => setCountryCode(e.target.value)}
             sx={{
               height: '57px',
-              alignItems: 'center',
-              display: 'flex',
               marginRight: 1,
               width: '100%',
-              justifyContent: 'center',
             }}
           >
             {Object.entries(countryCodeMap).map(([code, name]) => (
@@ -86,9 +92,7 @@ export default function GetFlagByCountry() {
           <Grid item xs={5}>
             <Grid container alignItems="center" justifyContent="center">
               <Grid item>
-               {/* {inpValue} */}
-               {console.log(typeof inpValue)}
-               <img src={`data:image/svg+xml;base64,${new Buffer(image).toString('base64')}`} />
+                <SVG src={inpValue} width="100%" height="auto" title={countryCode} />
               </Grid>
             </Grid>
           </Grid>
