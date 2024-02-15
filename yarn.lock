@@ -548,12 +548,7 @@
   resolved "https://registry.npmjs.org/@popperjs/core/-/core-2.11.8.tgz"
   integrity sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==
 
-"@razorpay/i18nify-js@^1.4.0":
-  version "1.4.0"
-  resolved "https://registry.npmjs.org/@razorpay/i18nify-js/-/i18nify-js-1.4.0.tgz"
-  integrity sha512-JY1g3Kn4e8ktsMbrDHOh8TEtPvJOT/A6FKGfNcaEVZ7uJM5Ew9fwP5j6orSF7FaGEZ8PVEIoCsycKhwm9fLfrA==
-
-"@razorpay/i18nify-js@file:../i18nify/packages/i18nify-js/":
+"@razorpay/i18nify-js@^1.4.0", "@razorpay/i18nify-js@file:../i18nify/packages/i18nify-js":
   version "1.4.0"
   dependencies:
     "@rollup/plugin-dynamic-import-vars" "^2.1.2"
