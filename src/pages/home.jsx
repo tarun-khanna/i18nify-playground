@@ -21,8 +21,6 @@ function generateRandomColor() {
   return colorList[randomIndex];
 }
 
-import { Box, Grid, Link, Container, Typography } from '@mui/material';
-
 const Home = () => {
   const [color, setColor] = useState('#305EFF');
   const navigate = useNavigate();
