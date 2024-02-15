@@ -17,7 +17,6 @@ export default function IsValidPhoneNumberView() {
   const isValid = isValidPhoneNumber(`${dialCode}${phoneNumber}`, countryCode);
   const errorMessage = isValid ? 'Valid phone number' : 'Invalid Phone Number';
 
-  console.log(phoneNumber, countryCode, isValidPhoneNumber(phoneNumber, countryCode))
   return (
     <Container maxWidth="xl">
       <Grid container>

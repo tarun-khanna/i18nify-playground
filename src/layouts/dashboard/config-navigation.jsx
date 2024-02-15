@@ -59,22 +59,27 @@ const navConfig = [
     children: [
       { title: 'GetFlagByCountry', path: '/geo/getFlagByCountry' },
       { title: 'GetListOfAllFlags', path: '/geo/getListOfAllFlags' },
+      { title: 'GetAllContinents', path: '/geo/getAllContinents' },
+      { title: 'GetAllCountries', path: '/geo/getAllCountries' },
+      { title: 'GetCountriesByContinent', path: '/geo/getCountriesByContinent' },
+      { title: 'GetStatesByCountry', path: '/geo/getStatesByCountry' },
+      { title: 'GetCities', path: '/geo/getCities' },
     ],
   },
-  {
-    title: 'State',
-    path: '/state',
-    icon: icon('ic_state'),
-    children: [
-      { title: 'GetState', path: '/state/getState' },
-      { title: 'SetState', path: '/state/setState' },
-    ],
-  },
-  {
-    title: 'Plugins',
-    path: '/plugins',
-    icon: icon('ic_plugin'),
-  },
+  // {
+  //   title: 'State',
+  //   path: '/state',
+  //   icon: icon('ic_state'),
+  //   children: [
+  //     { title: 'GetState', path: '/state/getState' },
+  //     { title: 'SetState', path: '/state/setState' },
+  //   ],
+  // },
+  // {
+  //   title: 'Plugins',
+  //   path: '/plugins',
+  //   icon: icon('ic_plugin'),
+  // },
 ];
 
 export default navConfig;

@@ -32,6 +32,12 @@ import GetRelativeTime from 'src/pages/date/getRelativeTime';
 import GetWeekdays from 'src/pages/date/getWeekdays';
 import IsValidDate from 'src/pages/date/isValidDate';
 import ParseDateTime from 'src/pages/date/parseDateTime';
+import GetAllContinents from 'src/pages/geo/getAllContinents';
+import GetAllCountries from 'src/pages/geo/getAllCountries';
+import GetCities from 'src/pages/geo/getCities';
+
+import GetCountriesByContinent from 'src/pages/geo/getCountriesByContinent';
+import GetStatesByCountry from 'src/pages/geo/getStatesByCountry';
 
 // ----------------------------------------------------------------------
 
@@ -89,38 +95,93 @@ export default function Router() {
           element: <GetFlagByCountry />,
         },
         {
+          path: 'geo/getAllContinents',
+          element: <GetAllContinents />,
+        },
+        {
+          path: 'geo/getAllCountries',
+          element: <GetAllCountries />,
+        },
+        {
+          path: 'geo/getCountriesByContinent',
+          element: <GetCountriesByContinent />,
+        },
+        {
+          path: 'geo/getStatesByCountry',
+          element: <GetStatesByCountry />,
+        },
+        {
+          path: 'geo/getCities',
+          element: <GetCities />,
+        },
+        {
           path: 'geo',
           element: <GeoPage />,
         },
         {
           path: 'date/formatDate',
-          element: <IntlOptionsDateProvider><FormatDate /></IntlOptionsDateProvider>,
+          element: (
+            <IntlOptionsDateProvider>
+              <FormatDate />
+            </IntlOptionsDateProvider>
+          ),
         },
         {
           path: 'date/formatDateTime',
-          element: <IntlOptionsDateProvider><FormatDateTime /></IntlOptionsDateProvider>,
+          element: (
+            <IntlOptionsDateProvider>
+              <FormatDateTime />
+            </IntlOptionsDateProvider>
+          ),
         },
         {
           path: 'date/formatTime',
-          element: <IntlOptionsDateProvider><FormatTime /></IntlOptionsDateProvider>,
+          element: (
+            <IntlOptionsDateProvider>
+              <FormatTime />
+            </IntlOptionsDateProvider>
+          ),
         },
         {
           path: 'date/getRelativeTime',
-          element: <IntlOptionsDateProvider><GetRelativeTime /></IntlOptionsDateProvider>,
+          element: (
+            <IntlOptionsDateProvider>
+              <GetRelativeTime />
+            </IntlOptionsDateProvider>
+          ),
         },
         {
           path: 'date/getWeekdays',
-          element: <IntlOptionsDateProvider><GetWeekdays /></IntlOptionsDateProvider>,
+          element: (
+            <IntlOptionsDateProvider>
+              <GetWeekdays />
+            </IntlOptionsDateProvider>
+          ),
         },
         {
           path: 'date/isValidDate',
-          element: <IntlOptionsDateProvider><IsValidDate /></IntlOptionsDateProvider>,
+          element: (
+            <IntlOptionsDateProvider>
+              <IsValidDate />
+            </IntlOptionsDateProvider>
+          ),
         },
         {
           path: 'date/parseDateTime',
-          element: <IntlOptionsDateProvider><ParseDateTime /></IntlOptionsDateProvider>,
+          element: (
+            <IntlOptionsDateProvider>
+              <ParseDateTime />
+            </IntlOptionsDateProvider>
+          ),
         },
-        { path: 'date', element: <IntlOptionsDateProvider><DatePage /></IntlOptionsDateProvider> },
+        {
+          path: 'date',
+          element: (
+            <IntlOptionsDateProvider>
+              <DatePage />
+            </IntlOptionsDateProvider>
+          ),
+        },
         { path: 'state', element: <Box /> },
         { path: 'plugins', element: <Box /> },
       ],

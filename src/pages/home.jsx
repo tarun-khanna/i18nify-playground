@@ -52,7 +52,7 @@ const Home = () => {
           }}
           variant="h1"
         >
-          Welcome to Geo Smart !
+          Welcome to Geo Smart ! 🚀
         </Typography>
 
         <Grid item xs={12} sm={9} sx={{ mb: 2 }}>
@@ -107,9 +107,9 @@ const Home = () => {
                   color="#2950DA"
                   component="button"
                   underline="none"
-                  onClick={() => navigate('/state')}
+                  onClick={() => navigate('/geo')}
                 >
-                  Core State module
+                  Geo
                 </Link>
               </Box>
             </Grid>
@@ -122,7 +122,9 @@ const Home = () => {
                 <Link
                   component="button"
                   underline="none"
-                  onClick={() => navigate('/plugins')}
+                  onClick={() =>
+                    window.open('https://www.npmjs.com/package/@razorpay/i18nify-react', '_blank')
+                  }
                   color="#2950DA"
                 >
                   i18nify-react
@@ -130,7 +132,7 @@ const Home = () => {
               </Box>
             </Grid>
 
-            <Grid item xs={12} sx={{ mb: 3 }}>
+            {/* <Grid item xs={12} sx={{ mb: 3 }}>
               <Typography variant="h3" sx={{ mb: 1 }} fontWeight="600">
                 Polyfills
               </Typography>
@@ -144,7 +146,7 @@ const Home = () => {
                   FormatNumberByParts
                 </Link>
               </Box>
-            </Grid>
+            </Grid> */}
           </Grid>
 
           {!isMobile && (
