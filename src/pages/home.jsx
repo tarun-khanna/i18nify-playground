@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 
@@ -20,6 +21,8 @@ function generateRandomColor() {
   return colorList[randomIndex];
 }
 
+import { Box, Grid, Link, Container, Typography } from '@mui/material';
+
 const Home = () => {
   const [color, setColor] = useState('#305EFF');
   const navigate = useNavigate();
@@ -35,6 +38,9 @@ const Home = () => {
 
   return (
     <Container maxWidth="xl">
+      <Helmet>
+        <title> i18nify </title>
+      </Helmet>
       <Grid container>
         <Typography
           sx={{
