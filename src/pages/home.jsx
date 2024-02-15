@@ -156,7 +156,7 @@ const Home = () => {
 
           {!isMobile && (
             <Grid item xs={12} sm={6}>
-              <img src="/i18nify-playground/assets/world_rotating.gif" alt="globe" />{' '}
+              <img height="390px" src="/i18nify-playground/assets/world_rotating.gif" alt="globe" />{' '}
             </Grid>
           )}
         </Grid>
