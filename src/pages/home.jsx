@@ -47,13 +47,12 @@ const Home = () => {
             mb: 2,
             fontSize: '72px',
             fontStyle: 'normal',
-            fontWeight: 600,
             lineHeight: '78px',
             color,
           }}
           variant="h1"
         >
-          Welcome to Geo Smart!
+          Welcome to Geo Smart !
         </Typography>
 
         <Grid item xs={12} sm={9} sx={{ mb: 2 }}>
@@ -70,7 +69,7 @@ const Home = () => {
         <Grid container sx={{ mb: 6 }}>
           <Grid item xs={12} sm={6}>
             <Grid item xs={12} sx={{ mb: 3 }}>
-              <Typography variant="h3" sx={{ mb: 1 }} fontWeight="600">
+              <Typography variant="h3" sx={{ mb: 1 }}>
                 Modules
               </Typography>
               <Box>
@@ -79,7 +78,6 @@ const Home = () => {
                   component="button"
                   underline="none"
                   onClick={() => navigate('/number')}
-                  fontWeight="500"
                 >
                   Number
                 </Link>
@@ -90,7 +88,6 @@ const Home = () => {
                   component="button"
                   underline="none"
                   onClick={() => navigate('/phone')}
-                  fontWeight="500"
                 >
                   Phone Number
                 </Link>
@@ -101,7 +98,6 @@ const Home = () => {
                   component="button"
                   underline="none"
                   onClick={() => navigate('/date')}
-                  fontWeight="500"
                 >
                   Date
                 </Link>
@@ -112,7 +108,6 @@ const Home = () => {
                   component="button"
                   underline="none"
                   onClick={() => navigate('/state')}
-                  fontWeight="500"
                 >
                   Core State module
                 </Link>
@@ -128,7 +123,6 @@ const Home = () => {
                   component="button"
                   underline="none"
                   onClick={() => navigate('/plugins')}
-                  fontWeight="500"
                   color="#2950DA"
                 >
                   i18nify-react
@@ -145,7 +139,6 @@ const Home = () => {
                   component="button"
                   underline="none"
                   onClick={() => navigate('/plugins')}
-                  fontWeight="500"
                   color="#2950DA"
                 >
                   FormatNumberByParts
