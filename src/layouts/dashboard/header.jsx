@@ -56,6 +56,7 @@ export default function Header({ onOpenNav }) {
           width: `calc(100% - ${NAV.WIDTH + 1}px)`,
           height: HEADER.H_DESKTOP,
         }),
+        bgcolor: '#f1f5fa',
       }}
     >
       <Toolbar

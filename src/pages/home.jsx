@@ -39,7 +39,7 @@ const Home = () => {
       <Helmet>
         <title> i18nify </title>
       </Helmet>
-      <Grid container>
+      <Grid container >
         <Typography
           sx={{
             mb: 2,
@@ -65,88 +65,95 @@ const Home = () => {
           </Typography>
         </Grid>
 
-        <Grid item xs={12} sx={{ mb: 3 }}>
-          <Typography variant="h3" sx={{ mb: 1 }}>
-            Modules
-          </Typography>
-          <Box>
-            <Link
-              color="#2950DA"
-              component="button"
-              underline="none"
-              onClick={() => navigate('/number')}
-              fontWeight="600"
-            >
-              Number
-            </Link>
-          </Box>
-          <Box>
-            <Link
-              color="#2950DA"
-              component="button"
-              underline="none"
-              onClick={() => navigate('/phone')}
-              fontWeight="600"
-            >
-              Phone Number
-            </Link>
-          </Box>
-          <Box>
-            <Link
-              color="#2950DA"
-              component="button"
-              underline="none"
-              onClick={() => navigate('/date')}
-              fontWeight="600"
-            >
-              Date
-            </Link>
-          </Box>
-          <Box>
-            <Link
-              color="#2950DA"
-              component="button"
-              underline="none"
-              onClick={() => navigate('/state')}
-              fontWeight="600"
-            >
-              Core State module
-            </Link>
-          </Box>
-        </Grid>
+        <Grid container sx={{ mb: 6 }}>
+          <Grid item xs={12} sm={6}>
+            <Grid item xs={12} sx={{ mb: 3 }}>
+              <Typography variant="h3" sx={{ mb: 1 }}>
+                Modules
+              </Typography>
+              <Box>
+                <Link
+                  color="#2950DA"
+                  component="button"
+                  underline="none"
+                  onClick={() => navigate('/number')}
+                  fontWeight="600"
+                >
+                  Number
+                </Link>
+              </Box>
+              <Box>
+                <Link
+                  color="#2950DA"
+                  component="button"
+                  underline="none"
+                  onClick={() => navigate('/phone')}
+                  fontWeight="600"
+                >
+                  Phone Number
+                </Link>
+              </Box>
+              <Box>
+                <Link
+                  color="#2950DA"
+                  component="button"
+                  underline="none"
+                  onClick={() => navigate('/date')}
+                  fontWeight="600"
+                >
+                  Date
+                </Link>
+              </Box>
+              <Box>
+                <Link
+                  color="#2950DA"
+                  component="button"
+                  underline="none"
+                  onClick={() => navigate('/state')}
+                  fontWeight="600"
+                >
+                  Core State module
+                </Link>
+              </Box>
+            </Grid>
 
-        <Grid item xs={12} sx={{ mb: 3 }}>
-          <Typography variant="h3" sx={{ mb: 1 }}>
-            Plugins
-          </Typography>
-          <Box>
-            <Link
-              component="button"
-              underline="none"
-              onClick={() => navigate('/plugins')}
-              fontWeight="600"
-              color="#2950DA"
-            >
-              i18nify-react
-            </Link>
-          </Box>
-        </Grid>
+            <Grid item xs={12} sx={{ mb: 3 }}>
+              <Typography variant="h3" sx={{ mb: 1 }}>
+                Plugins
+              </Typography>
+              <Box>
+                <Link
+                  component="button"
+                  underline="none"
+                  onClick={() => navigate('/plugins')}
+                  fontWeight="600"
+                  color="#2950DA"
+                >
+                  i18nify-react
+                </Link>
+              </Box>
+            </Grid>
 
-        <Grid item xs={12} sx={{ mb: 3 }}>
-          <Typography variant="h3" sx={{ mb: 1 }}>
-            Polyfills
-          </Typography>
-          <Box>
-            <Link
-              component="button"
-              underline="none"
-              onClick={() => navigate('/plugins')}
-              fontWeight="600"
-              color="#2950DA"
-            >
-              FormatNumberByParts
-            </Link>
-          </Box>
+            <Grid item xs={12} sx={{ mb: 3 }}>
+              <Typography variant="h3" sx={{ mb: 1 }}>
+                Polyfills
+              </Typography>
+              <Box>
+                <Link
+                  component="button"
+                  underline="none"
+                  onClick={() => navigate('/plugins')}
+                  fontWeight="600"
+                  color="#2950DA"
+                >
+                  FormatNumberByParts
+                </Link>
+              </Box>
+            </Grid>
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <img src="/i18nify-playground/assets/globe.svg" alt="globe" />{' '}
+          </Grid>
         </Grid>
       </Grid>
     </Container>
