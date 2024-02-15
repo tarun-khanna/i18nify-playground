@@ -4,6 +4,7 @@ import { Box } from '@mui/material';
 
 import Home from 'src/pages/home';
 import NumberPage from 'src/pages/number';
+import GeoPage from 'src/pages/geo';
 import PhoneNumber from 'src/pages/phone/phoneNumber';
 import DashboardLayout from 'src/layouts/dashboard';
 import IsValidPhoneNumberView from 'src/pages/phone/isValidPhoneNumber';
@@ -16,6 +17,9 @@ import GetCurrencySymbol from 'src/pages/number/getCurrencySymbol';
 import GetCurrencyList from 'src/pages/number/getCurrencyList';
 import ConvertToMajorUnit from 'src/pages/number/convertToMajorUnit';
 import ConvertToMinorUnit from 'src/pages/number/convertToMinorUnit';
+
+import GetFlagByCountry from 'src/pages/geo/getFlagByCountry';
+import GetListOfAllFlags from 'src/pages/geo/getListOfAllFlags';
 
 // ----------------------------------------------------------------------
 
@@ -65,6 +69,18 @@ export default function Router() {
         { path: 'phone/formatPhoneNumber', element: <FormatPhoneNumber /> },
         { path: 'phone/parsePhoneNumber', element: <ParsePhoneNumber /> },
         { path: 'date', element: <Box /> },
+        {
+          path: 'geo/getListOfAllFlags',
+          element: <GetListOfAllFlags />,
+        },
+        {
+          path: 'geo/getFlagByCountry',
+          element: <GetFlagByCountry />,
+        },
+        {
+          path: 'geo',
+          element: <GeoPage />,
+        },
         { path: 'state', element: <Box /> },
         { path: 'plugins', element: <Box /> },
       ],

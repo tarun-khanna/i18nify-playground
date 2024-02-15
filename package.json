@@ -30,7 +30,7 @@
     "@monaco-editor/react": "^4.6.0",
     "@mui/lab": "^5.0.0-alpha.147",
     "@mui/material": "^5.15.6",
-    "@razorpay/i18nify-js": "^1.4.0",
+    "@razorpay/i18nify-js": "file:../i18nify/packages/i18nify-js/",
     "@razorpay/i18nify-react": "^4.0.0",
     "apexcharts": "^3.43.0",
     "date-fns": "^2.30.0",

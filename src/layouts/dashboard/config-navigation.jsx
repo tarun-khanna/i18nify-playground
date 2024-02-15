@@ -44,6 +44,15 @@ const navConfig = [
     icon: icon('ic_date'),
   },
   {
+    title: 'Geo',
+    path: '/geo',
+    icon: icon('ic_phone'),
+    children: [
+      { title: 'GetFlagByCountry', path: '/geo/getFlagByCountry' },
+      { title: 'GetListOfAllFlags', path: '/geo/getListOfAllFlags' },
+    ],
+  },
+  {
     title: 'State',
     path: '/state',
     icon: icon('ic_state'),
