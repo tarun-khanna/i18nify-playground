@@ -6,6 +6,7 @@ import { IntlOptionsDateProvider } from 'src/context/intlOptionsDateContext';
 
 import Home from 'src/pages/home';
 import NumberPage from 'src/pages/number';
+import GeoPage from 'src/pages/geo';
 import DatePage from 'src/pages/date';
 
 import PhoneNumber from 'src/pages/phone/phoneNumber';
@@ -20,6 +21,9 @@ import GetCurrencySymbol from 'src/pages/number/getCurrencySymbol';
 import GetCurrencyList from 'src/pages/number/getCurrencyList';
 import ConvertToMajorUnit from 'src/pages/number/convertToMajorUnit';
 import ConvertToMinorUnit from 'src/pages/number/convertToMinorUnit';
+
+import GetFlagByCountry from 'src/pages/geo/getFlagByCountry';
+import GetListOfAllFlags from 'src/pages/geo/getListOfAllFlags';
 
 import FormatDate from 'src/pages/date/formatDate';
 import FormatDateTime from 'src/pages/date/formatDateTime';
@@ -76,6 +80,18 @@ export default function Router() {
         { path: 'phone/isValidPhoneNumber', element: <IsValidPhoneNumberView /> },
         { path: 'phone/formatPhoneNumber', element: <FormatPhoneNumber /> },
         { path: 'phone/parsePhoneNumber', element: <ParsePhoneNumber /> },
+        {
+          path: 'geo/getListOfAllFlags',
+          element: <GetListOfAllFlags />,
+        },
+        {
+          path: 'geo/getFlagByCountry',
+          element: <GetFlagByCountry />,
+        },
+        {
+          path: 'geo',
+          element: <GeoPage />,
+        },
         {
           path: 'date/formatDate',
           element: <IntlOptionsDateProvider><FormatDate /></IntlOptionsDateProvider>,

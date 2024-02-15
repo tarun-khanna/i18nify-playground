@@ -53,6 +53,15 @@ const navConfig = [
     ],
   },
   {
+    title: 'Geo',
+    path: '/geo',
+    icon: icon('ic_geo'),
+    children: [
+      { title: 'GetFlagByCountry', path: '/geo/getFlagByCountry' },
+      { title: 'GetListOfAllFlags', path: '/geo/getListOfAllFlags' },
+    ],
+  },
+  {
     title: 'State',
     path: '/state',
     icon: icon('ic_state'),
