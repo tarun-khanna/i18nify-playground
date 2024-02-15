@@ -7,9 +7,9 @@ import { Grid, useTheme, Typography, useMediaQuery } from '@mui/material';
 
 import { removeEmptyValues } from 'src/utils';
 import { useIntlOptionsDateContext } from 'src/context/intlOptionsDateContext';
-import { useLocaleContext } from 'src/context/localeContext';
 
 import IntlOptionsDateForm from 'src/components/intlOptionsDateForm';
+import { useI18nContext } from '@razorpay/i18nify-react';
 
 // ----------------------------------------------------------------------
 
@@ -28,10 +28,11 @@ export default function GetWeekdays() {
   const { intlDateOptions } = useIntlOptionsDateContext();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-  const { locale } = useLocaleContext();
+  const { i18nState } = useI18nContext();
+  const { locale } = i18nState;
 
   const code = JSON.stringify(
-    getWeekdays({locale, intlOptions: {weekday: removeEmptyValues(intlDateOptions).weekday }}),
+    getWeekdays({ locale, intlOptions: { weekday: removeEmptyValues(intlDateOptions).weekday } }),
     null,
     2
   );
@@ -62,12 +63,12 @@ export default function GetWeekdays() {
             </Grid>
           </Grid>
         )}
-         <Grid
+        <Grid
           item
           xs={isMobile ? 12 : 7}
           sx={!isMobile && { 'border-right': '1px solid rgba(0,0,0,0.2)', pr: 2 }}
         >
-          <IntlOptionsDateForm utilName="getWeekdays"/>
+          <IntlOptionsDateForm utilName="getWeekdays" />
         </Grid>
         {!isMobile && (
           <Grid item xs={5}>

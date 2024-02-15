@@ -7,9 +7,9 @@ import { Grid, useTheme, Typography, useMediaQuery } from '@mui/material';
 
 import { removeEmptyValues } from 'src/utils';
 import { useIntlOptionsDateContext } from 'src/context/intlOptionsDateContext';
-import { useLocaleContext } from 'src/context/localeContext';
 
 import DateForm from 'src/sections/date/date-form';
+import { useI18nContext } from '@razorpay/i18nify-react';
 
 // ----------------------------------------------------------------------
 
@@ -18,7 +18,8 @@ export default function GetRelativeTime() {
   const { intlDateOptions } = useIntlOptionsDateContext();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-  const { locale } = useLocaleContext();
+  const { i18nState } = useI18nContext();
+  const { locale } = i18nState;
 
   return (
     <Container maxWidth="xl">

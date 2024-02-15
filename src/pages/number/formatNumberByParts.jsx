@@ -9,6 +9,7 @@ import { removeEmptyValues } from 'src/utils';
 import { useIntlOptionsContext } from 'src/context/intlOptionsContext';
 
 import NumberForm from 'src/sections/number/number-form';
+import { useI18nContext } from '@razorpay/i18nify-react';
 
 // ----------------------------------------------------------------------
 
@@ -29,9 +30,12 @@ export default function NumberView() {
   const { intlOptions } = useIntlOptionsContext();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const { i18nState } = useI18nContext();
+  const { locale } = i18nState;
 
   const code = JSON.stringify(
     formatNumberByParts(inpValue, {
+      locale,
       currency,
       intlOptions: removeEmptyValues(intlOptions),
     }),
