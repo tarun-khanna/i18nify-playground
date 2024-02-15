@@ -58,7 +58,7 @@ const Home = () => {
 
         <Grid item xs={12} sm={9} sx={{ mb: 2 }}>
           <Typography variant="body1">
-            A one-stop solution built in javascript to provide internationalization support. Hey,
+            A one-stop solution built in javascript for all your internationalization needs. Hey,
             dive into this JavaScript toolkit—it’s like having a magic kit for your app! 🪄✨
             Picture this: modules for phoneNumber, currency, date—they’re like enchanted tools that
             make your app talk fluently in any language, anywhere! It’s your ticket to making your
