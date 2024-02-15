@@ -2,7 +2,8 @@ import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 
-import { Box, Grid, Link, Container, Typography } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+import { Box, Grid, Link, Container, Typography, useMediaQuery } from '@mui/material';
 
 function generateRandomColor() {
   const colorList = [
@@ -24,11 +25,13 @@ function generateRandomColor() {
 const Home = () => {
   const [color, setColor] = useState('#305EFF');
   const navigate = useNavigate();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   useEffect(() => {
     const intervalId = setInterval(() => {
       setColor(generateRandomColor());
-    }, 1000);
+    }, 2000);
 
     // Clear interval on component unmount
     return () => clearInterval(intervalId);
@@ -39,7 +42,7 @@ const Home = () => {
       <Helmet>
         <title> i18nify </title>
       </Helmet>
-      <Grid container >
+      <Grid container>
         <Typography
           sx={{
             mb: 2,
@@ -68,7 +71,7 @@ const Home = () => {
         <Grid container sx={{ mb: 6 }}>
           <Grid item xs={12} sm={6}>
             <Grid item xs={12} sx={{ mb: 3 }}>
-              <Typography variant="h3" sx={{ mb: 1 }}>
+              <Typography variant="h3" sx={{ mb: 1 }} fontWeight="600">
                 Modules
               </Typography>
               <Box>
@@ -77,7 +80,7 @@ const Home = () => {
                   component="button"
                   underline="none"
                   onClick={() => navigate('/number')}
-                  fontWeight="600"
+                  fontWeight="500"
                 >
                   Number
                 </Link>
@@ -88,7 +91,7 @@ const Home = () => {
                   component="button"
                   underline="none"
                   onClick={() => navigate('/phone')}
-                  fontWeight="600"
+                  fontWeight="500"
                 >
                   Phone Number
                 </Link>
@@ -99,7 +102,7 @@ const Home = () => {
                   component="button"
                   underline="none"
                   onClick={() => navigate('/date')}
-                  fontWeight="600"
+                  fontWeight="500"
                 >
                   Date
                 </Link>
@@ -110,7 +113,7 @@ const Home = () => {
                   component="button"
                   underline="none"
                   onClick={() => navigate('/state')}
-                  fontWeight="600"
+                  fontWeight="500"
                 >
                   Core State module
                 </Link>
@@ -118,7 +121,7 @@ const Home = () => {
             </Grid>
 
             <Grid item xs={12} sx={{ mb: 3 }}>
-              <Typography variant="h3" sx={{ mb: 1 }}>
+              <Typography variant="h3" sx={{ mb: 1 }} fontWeight="600">
                 Plugins
               </Typography>
               <Box>
@@ -126,7 +129,7 @@ const Home = () => {
                   component="button"
                   underline="none"
                   onClick={() => navigate('/plugins')}
-                  fontWeight="600"
+                  fontWeight="500"
                   color="#2950DA"
                 >
                   i18nify-react
@@ -135,7 +138,7 @@ const Home = () => {
             </Grid>
 
             <Grid item xs={12} sx={{ mb: 3 }}>
-              <Typography variant="h3" sx={{ mb: 1 }}>
+              <Typography variant="h3" sx={{ mb: 1 }} fontWeight="600">
                 Polyfills
               </Typography>
               <Box>
@@ -143,7 +146,7 @@ const Home = () => {
                   component="button"
                   underline="none"
                   onClick={() => navigate('/plugins')}
-                  fontWeight="600"
+                  fontWeight="500"
                   color="#2950DA"
                 >
                   FormatNumberByParts
@@ -151,9 +154,11 @@ const Home = () => {
               </Box>
             </Grid>
           </Grid>
-          <Grid item xs={12} sm={6}>
-            <img src="/i18nify-playground/assets/globe.svg" alt="globe" />{' '}
-          </Grid>
+          {!isMobile && (
+            <Grid item xs={12} sm={6}>
+              <img src="/i18nify-playground/assets/globe.svg" alt="globe" />{' '}
+            </Grid>
+          )}
         </Grid>
       </Grid>
     </Container>
