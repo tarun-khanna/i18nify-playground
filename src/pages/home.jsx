@@ -13,7 +13,6 @@ function generateRandomColor() {
     '#900C3F',
     '#581845',
     '#FFC300',
-    '#DAF7A6',
     '#FF5733',
     '#C70039',
     '#900C3F',
@@ -54,7 +53,7 @@ const Home = () => {
           }}
           variant="h1"
         >
-          Welcome to i18nify!
+          Welcome to Geo Smart!
         </Typography>
 
         <Grid item xs={12} sm={9} sx={{ mb: 2 }}>
@@ -154,9 +153,10 @@ const Home = () => {
               </Box>
             </Grid>
           </Grid>
+
           {!isMobile && (
             <Grid item xs={12} sm={6}>
-              <img src="/i18nify-playground/assets/globe.svg" alt="globe" />{' '}
+              <img src="/i18nify-playground/assets/world_rotating.gif" alt="globe" />{' '}
             </Grid>
           )}
         </Grid>
