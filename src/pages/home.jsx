@@ -55,7 +55,7 @@ const Home = () => {
           Welcome to Geo Smart ! 🚀
         </Typography>
 
-        <Grid item xs={12} sm={9} sx={{ mb: 2 }}>
+        <Grid item xs={12} sm={10} sx={{ mb: 2 }}>
           <Typography variant="body1">
             A one-stop solution built in javascript for all your internationalization needs. Hey,
             dive into this JavaScript toolkit—it’s like having a magic kit for your app! 🪄✨
