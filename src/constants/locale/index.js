@@ -24,4 +24,9 @@ export const LANGS = [
     label: 'USA',
     icon: '/i18nify-playground/assets/icons/ic_flag_us.svg',
   },
+  {
+    value: 'ms-MY',
+    label: 'MY',
+    icon: '/i18nify-playground/assets/icons/ic_flag_my.svg',
+  },
 ];
