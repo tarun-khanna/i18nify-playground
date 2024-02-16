@@ -66,6 +66,21 @@ const navConfig = [
       { title: 'GetCities', path: '/geo/getCities' },
     ],
   },
+  {
+    title: 'Salutation',
+    path: '/salutation',
+    icon: icon('ic_salutation'),
+  },
+  {
+    title: 'Localisation',
+    path: '/localisation',
+    icon: icon('ic_lang'),
+  },
+  {
+    title: 'Bank codes',
+    path: '/banking',
+    icon: icon('ic_bank'),
+  },
   // {
   //   title: 'State',
   //   path: '/state',

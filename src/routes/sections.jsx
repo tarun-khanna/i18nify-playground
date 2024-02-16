@@ -38,6 +38,7 @@ import GetCities from 'src/pages/geo/getCities';
 
 import GetCountriesByContinent from 'src/pages/geo/getCountriesByContinent';
 import GetStatesByCountry from 'src/pages/geo/getStatesByCountry';
+import ComingSoon from 'src/components/comingSoon';
 
 // ----------------------------------------------------------------------
 
@@ -182,6 +183,9 @@ export default function Router() {
             </IntlOptionsDateProvider>
           ),
         },
+        { path: '/salutation', element: <ComingSoon /> },
+        { path: '/localisation', element: <ComingSoon /> },
+        { path: '/banking', element: <ComingSoon /> },
         { path: 'state', element: <Box /> },
         { path: 'plugins', element: <Box /> },
       ],
