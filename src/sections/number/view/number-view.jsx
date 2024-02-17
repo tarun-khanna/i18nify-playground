@@ -15,7 +15,7 @@ export default function NumberView() {
     <Container maxWidth="xl">
       <Grid container>
         <Typography color="#4767FD" variant="h2" sx={{ mb: 2 }}>
-          Number module
+          Currency & Number module
         </Typography>
 
         <Grid item xs={10}>
