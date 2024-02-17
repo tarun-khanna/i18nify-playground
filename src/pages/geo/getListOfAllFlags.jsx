@@ -19,7 +19,7 @@ export default function GetListOfAllFlags() {
   return (
     <Container maxWidth="xl">
       <Grid container>
-        <Grid item xs={isMobile ? 12 : 7}>
+        <Grid item xs={12}>
           <Typography color="#4767FD" variant="h2" sx={{ mb: 2 }}>
             GetListOfAllFlags
           </Typography>

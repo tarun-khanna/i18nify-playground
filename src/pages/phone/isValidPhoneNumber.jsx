@@ -20,9 +20,9 @@ export default function IsValidPhoneNumberView() {
   return (
     <Container maxWidth="xl">
       <Grid container>
-        <Grid item xs={isMobile ? 12 : 7}>
+        <Grid item>
           <Typography color="#4767FD" variant="h2" sx={{ mb: 2 }}>
-            isValidPhoneNumber
+            IsValidPhoneNumber
           </Typography>
 
           <Typography variant="body1" sx={{ mb: 6 }}>

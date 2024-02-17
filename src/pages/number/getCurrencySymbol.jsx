@@ -16,7 +16,7 @@ export default function GetCurrencySymbol() {
   return (
     <Container maxWidth="xl">
       <Grid container>
-        <Grid item xs={isMobile ? 12 : 7}>
+        <Grid item>
           <Typography color="#4767FD" variant="h2" sx={{ mb: 2 }}>
             GetCurrencySymbol
           </Typography>
@@ -27,14 +27,12 @@ export default function GetCurrencySymbol() {
           </Typography>
         </Grid>
 
-        <Grid item xs={isMobile ? 12 : 7}>
+        <Grid item xs={isMobile ? 12 : 4}>
           <Grid sx={{ height: '100px' }} container alignItems="center" justifyContent="center">
             <Grid item>
               <Typography variant="h2">{getCurrencySymbol(currency)}</Typography>
             </Grid>
           </Grid>
-        </Grid>
-        <Grid item xs={isMobile ? 12 : 7}>
           <CurrencyListDropdown currency={currency} onChange={(val) => setCurrency(val)} />
         </Grid>
       </Grid>

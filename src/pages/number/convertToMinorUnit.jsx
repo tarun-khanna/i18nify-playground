@@ -19,7 +19,7 @@ export default function ConvertToMinorUnit() {
       <Grid container>
         <Grid item xs={isMobile ? 12 : 7}>
           <Typography color="#4767FD" variant="h2" sx={{ mb: 2 }}>
-            convertToMinorUnit
+            ConvertToMinorUnit
           </Typography>
 
           <Typography variant="body1" sx={{ mb: 6 }}>
@@ -58,7 +58,7 @@ export default function ConvertToMinorUnit() {
         </Grid>
         {!isMobile && (
           <Grid item xs={5}>
-            <Grid  sx={{ height: '30vh' }} container alignItems="center" justifyContent="center">
+            <Grid sx={{ height: '30vh' }} container alignItems="center" justifyContent="center">
               <Grid item>
                 <Typography variant="h2">
                   {convertToMinorUnit(inpValue, {

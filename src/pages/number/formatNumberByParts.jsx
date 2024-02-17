@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import Editor from '@monaco-editor/react';
 import { formatNumberByParts } from '@razorpay/i18nify-js';
 
 import Container from '@mui/material/Container';
@@ -10,19 +9,9 @@ import { useIntlOptionsContext } from 'src/context/intlOptionsContext';
 
 import NumberForm from 'src/sections/number/number-form';
 import { useI18nContext } from '@razorpay/i18nify-react';
+import CodeEditor from 'src/components/codeEditor';
 
 // ----------------------------------------------------------------------
-
-const CodeEditor = ({ value }) => {
-  return (
-    <Editor
-      theme="vs-dark"
-      defaultLanguage="json"
-      value={value}
-      options={{ minimap: { enabled: false } }}
-    />
-  );
-};
 
 export default function NumberView() {
   const [currency, setCurrency] = useState('');

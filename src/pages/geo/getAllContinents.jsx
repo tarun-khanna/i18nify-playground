@@ -1,9 +1,9 @@
-import { Editor } from '@monaco-editor/react';
-
 import Container from '@mui/material/Container';
 import { Grid, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { getAllContinents } from '@razorpay/i18nify-js';
 import { useEffect, useState } from 'react';
+import CodeEditor from 'src/components/codeEditor';
+import ContinentDropdown from 'src/components/continentDropdown';
 
 // ----------------------------------------------------------------------
 
@@ -11,9 +11,19 @@ export default function GetAllContinents() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const [code, setCode] = useState('');
+  const [continentList, setContinentList] = useState([]);
+  const [continentInp, setContinentInp] = useState('');
 
   useEffect(() => {
-    getAllContinents().then((res) => setCode(JSON.stringify(res, null, 2)));
+    getAllContinents().then((res) => {
+      setCode(JSON.stringify(res, null, 2));
+      const data = Object.keys(res).map((continent) => ({
+        code: continent,
+        name: res[continent].name,
+      }));
+      setContinentList(data);
+      setContinentInp(data[0].code);
+    });
   }, []);
 
   return (
@@ -31,15 +41,36 @@ export default function GetAllContinents() {
           </Typography>
         </Grid>
 
-        <Grid item xs={isMobile ? 12 : 7}>
-          <Editor
-            theme="vs-dark"
-            defaultLanguage="json"
-            value={code}
-            options={{ minimap: { enabled: false } }}
-            height="65vh"
+        {isMobile && (
+          <Grid item xs={12}>
+            <Grid sx={{ height: '200px' }} container alignItems="center" justifyContent="center">
+              <Grid item sx={{ height: '200px', width: '100%', padding: '20px 0px' }}>
+                <CodeEditor value={code} />
+              </Grid>
+            </Grid>
+          </Grid>
+        )}
+        <Grid
+          item
+          xs={isMobile ? 12 : 7}
+          sx={!isMobile && { 'border-right': '1px solid rgba(0,0,0,0.2)', pr: 2 }}
+        >
+          <ContinentDropdown
+            label="Continent List"
+            list={continentList}
+            value={continentInp}
+            onChange={(e) => setContinentInp(e)}
           />
         </Grid>
+        {!isMobile && (
+          <Grid item xs={5}>
+            <Grid sx={{ height: '60vh' }} container alignItems="center" justifyContent="center">
+              <Grid item sx={{ height: '100%', width: '100%', padding: '0px 20px' }}>
+                <CodeEditor value={code} />
+              </Grid>
+            </Grid>
+          </Grid>
+        )}
       </Grid>
     </Container>
   );

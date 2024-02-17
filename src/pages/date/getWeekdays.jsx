@@ -1,6 +1,4 @@
-import { useState } from 'react';
 import { getWeekdays } from '@razorpay/i18nify-js';
-import Editor from '@monaco-editor/react';
 
 import Container from '@mui/material/Container';
 import { Grid, useTheme, Typography, useMediaQuery } from '@mui/material';
@@ -10,19 +8,9 @@ import { useIntlOptionsDateContext } from 'src/context/intlOptionsDateContext';
 
 import IntlOptionsDateForm from 'src/components/intlOptionsDateForm';
 import { useI18nContext } from '@razorpay/i18nify-react';
+import CodeEditor from 'src/components/codeEditor';
 
 // ----------------------------------------------------------------------
-
-const CodeEditor = ({ value }) => {
-  return (
-    <Editor
-      theme="vs-dark"
-      defaultLanguage="json"
-      value={value}
-      options={{ minimap: { enabled: false } }}
-    />
-  );
-};
 
 export default function GetWeekdays() {
   const { intlDateOptions } = useIntlOptionsDateContext();

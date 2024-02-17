@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { parseDateTime } from '@razorpay/i18nify-js';
-import Editor from '@monaco-editor/react';
 
 import dayjs from 'dayjs';
 import Container from '@mui/material/Container';
@@ -11,19 +10,9 @@ import { useIntlOptionsDateContext } from 'src/context/intlOptionsDateContext';
 
 import DateForm from 'src/sections/date/date-form';
 import { useI18nContext } from '@razorpay/i18nify-react';
+import CodeEditor from 'src/components/codeEditor';
 
 // ----------------------------------------------------------------------
-
-const CodeEditor = ({ value }) => {
-  return (
-    <Editor
-      theme="vs-dark"
-      defaultLanguage="json"
-      value={value}
-      options={{ minimap: { enabled: false } }}
-    />
-  );
-};
 
 export default function ParseDateTime() {
   const [inpValue, setInpValue] = useState(new Date());

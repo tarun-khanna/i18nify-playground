@@ -1,29 +1,22 @@
-import { Editor } from '@monaco-editor/react';
-
 import Container from '@mui/material/Container';
-import { Box, Grid, MenuItem, Select, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { Grid, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { getAllCountries, getStatesByCountry } from '@razorpay/i18nify-js';
 import { useEffect, useState } from 'react';
 import { ALLOWED_COUNTRIES } from 'src/constants/geo';
+import CodeEditor from 'src/components/codeEditor';
+import CountryDropdown from 'src/components/countryDropdown';
+import StateDropdown from 'src/components/stateDropdown';
 
 // ----------------------------------------------------------------------
-const CodeEditor = ({ value }) => {
-  return (
-    <Editor
-      theme="vs-dark"
-      defaultLanguage="json"
-      value={value}
-      options={{ minimap: { enabled: false } }}
-    />
-  );
-};
 
 export default function GetStatesByCountry() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const [code, setCode] = useState('');
-  const [countryInp, setCountryInp] = useState('IN');
+  const [countryInp, setCountryInp] = useState('');
   const [countryList, setCountryList] = useState([]);
+  const [stateList, setStateList] = useState([]);
+  const [stateVal, setStateVal] = useState('');
 
   useEffect(() => {
     getAllCountries().then((res) =>
@@ -32,7 +25,12 @@ export default function GetStatesByCountry() {
   }, []);
 
   useEffect(() => {
-    getStatesByCountry(countryInp).then((res) => setCode(JSON.stringify(res, null, 2)));
+    getStatesByCountry(countryInp).then((res) => {
+      setCode(JSON.stringify(res, null, 2));
+      const data = Object.keys(res).map((stateCode) => ({ ...res[stateCode], code: stateCode }));
+      setStateList(data);
+      setStateVal(data[0].code);
+    });
   }, [countryInp]);
 
   return (
@@ -65,33 +63,17 @@ export default function GetStatesByCountry() {
           xs={isMobile ? 12 : 7}
           sx={!isMobile && { 'border-right': '1px solid rgba(0,0,0,0.2)', pr: 2 }}
         >
-          <Typography variant="h5">Select Country</Typography>
-          <Select
-            size="small"
+          <CountryDropdown
             value={countryInp}
-            onChange={(e) => setCountryInp(e.target.value)}
-            sx={{
-              height: '57px',
-              marginRight: 1,
-              width: '100%',
-            }}
-          >
-            {countryList.map((country) => (
-              <MenuItem key={country.code} value={country.code}>
-                <Box
-                  sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    textOverflow: 'initial',
-                  }}
-                >
-                  <div width="30px">
-                    {country.code} - {country.name}
-                  </div>
-                </Box>
-              </MenuItem>
-            ))}
-          </Select>
+            list={countryList}
+            onChange={(e) => setCountryInp(e)}
+          />
+          <StateDropdown
+            label="List of States"
+            value={stateVal}
+            list={stateList}
+            onChange={(e) => setStateVal(e)}
+          />
         </Grid>
         {!isMobile && (
           <Grid item xs={5}>

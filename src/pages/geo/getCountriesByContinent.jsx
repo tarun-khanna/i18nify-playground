@@ -1,35 +1,39 @@
-import { Editor } from '@monaco-editor/react';
-
 import Container from '@mui/material/Container';
-import { Box, Grid, MenuItem, Select, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { Grid, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { getAllContinents, getCountriesByContinent } from '@razorpay/i18nify-js';
 import { useEffect, useState } from 'react';
+import CodeEditor from 'src/components/codeEditor';
+import CountryDropdown from 'src/components/countryDropdown';
+import ContinentDropdown from 'src/components/continentDropdown';
 
 // ----------------------------------------------------------------------
-const CodeEditor = ({ value }) => {
-  return (
-    <Editor
-      theme="vs-dark"
-      defaultLanguage="json"
-      value={value}
-      options={{ minimap: { enabled: false } }}
-    />
-  );
-};
 
 export default function GetCountriesByContinent() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const [code, setCode] = useState('');
-  const [continentVal, setContinentVal] = useState('AS');
+  const [continentVal, setContinentVal] = useState('');
   const [continentList, setContinentList] = useState([]);
+  const [countryList, setCountryList] = useState([]);
+  const [countryInp, setCountryInp] = useState('');
 
   useEffect(() => {
-    getAllContinents().then((res) => setContinentList(res));
+    getAllContinents().then((res) => {
+      setCode(JSON.stringify(res, null, 2));
+      const data = Object.keys(res).map((continent) => ({
+        code: continent,
+        name: res[continent].name,
+      }));
+      setContinentList(data);
+    });
   }, []);
 
   useEffect(() => {
-    getCountriesByContinent(continentVal).then((res) => setCode(JSON.stringify(res, null, 2)));
+    getCountriesByContinent(continentVal).then((res) => {
+      setCode(JSON.stringify(res, null, 2));
+      setCountryList(res);
+      setCountryInp(res[0].code || res[1].code);
+    });
   }, [continentVal]);
 
   return (
@@ -62,33 +66,17 @@ export default function GetCountriesByContinent() {
           xs={isMobile ? 12 : 7}
           sx={!isMobile && { 'border-right': '1px solid rgba(0,0,0,0.2)', pr: 2 }}
         >
-          <Typography variant="h5">Select Continent</Typography>
-          <Select
-            size="small"
+          <ContinentDropdown
+            list={continentList}
             value={continentVal}
-            onChange={(e) => setContinentVal(e.target.value)}
-            sx={{
-              height: '57px',
-              marginRight: 1,
-              width: '100%',
-            }}
-          >
-            {Object.entries(continentList).map(([continentCode, continent]) => (
-              <MenuItem key={continentCode} value={continentCode}>
-                <Box
-                  sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    textOverflow: 'initial',
-                  }}
-                >
-                  <div width="30px">
-                    {continentCode} - {continent.name}
-                  </div>
-                </Box>
-              </MenuItem>
-            ))}
-          </Select>
+            onChange={(continent) => setContinentVal(continent)}
+          />
+          <CountryDropdown
+            label="Country List"
+            list={countryList}
+            value={countryInp}
+            onChange={(country) => setCountryInp(country)}
+          />
         </Grid>
         {!isMobile && (
           <Grid item xs={5}>

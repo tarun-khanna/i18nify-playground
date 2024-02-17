@@ -1,22 +1,13 @@
-import { Editor } from '@monaco-editor/react';
-
 import Container from '@mui/material/Container';
 import { Box, Grid, MenuItem, Select, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { getAllCountries, getCities, getStatesByCountry, setState } from '@razorpay/i18nify-js';
 import { useEffect, useState } from 'react';
 import { ALLOWED_COUNTRIES } from 'src/constants/geo';
+import CodeEditor from 'src/components/codeEditor';
+import CountryDropdown from 'src/components/countryDropdown';
+import StateDropdown from 'src/components/stateDropdown';
 
 // ----------------------------------------------------------------------
-const CodeEditor = ({ value }) => {
-  return (
-    <Editor
-      theme="vs-dark"
-      defaultLanguage="json"
-      value={value}
-      options={{ minimap: { enabled: false } }}
-    />
-  );
-};
 
 export default function GetCities() {
   const theme = useTheme();
@@ -26,6 +17,8 @@ export default function GetCities() {
   const [countryList, setCountryList] = useState([]);
   const [stateInp, setStateInp] = useState('');
   const [stateList, setStateList] = useState([]);
+  const [cities, setCities] = useState([]);
+  const [cityInp, setCityInp] = useState('');
 
   useEffect(() => {
     getAllCountries().then((res) =>
@@ -48,6 +41,8 @@ export default function GetCities() {
   useEffect(() => {
     if (!stateInp) return;
     getCities(countryInp, stateInp).then((res) => {
+      setCities(res);
+      setCityInp(res[0]);
       setCode(JSON.stringify(res, null, 2));
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -84,47 +79,25 @@ export default function GetCities() {
           xs={isMobile ? 12 : 7}
           sx={!isMobile && { 'border-right': '1px solid rgba(0,0,0,0.2)', pr: 2 }}
         >
-          <Typography variant="h5">Select Country</Typography>
-          <Select
-            size="small"
+          <CountryDropdown
             value={countryInp}
-            onChange={(e) => setCountryInp(e.target.value)}
-            sx={{
-              height: '57px',
-              marginRight: 1,
-              width: '100%',
-              mb: 4,
-            }}
-          >
-            {countryList.map((country) => (
-              <MenuItem key={country.code} value={country.code}>
-                <Box
-                  sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    textOverflow: 'initial',
-                  }}
-                >
-                  <div width="30px">
-                    {country.code} - {country.name}
-                  </div>
-                </Box>
-              </MenuItem>
-            ))}
-          </Select>
-          <Typography variant="h5">Select State</Typography>
+            list={countryList}
+            onChange={(country) => setCountryInp(country)}
+          />
+          <StateDropdown value={stateInp} onChange={(e) => setStateInp(e)} list={stateList} />
+
+          <Typography variant="h5">List of Cities</Typography>
           <Select
             size="small"
-            value={stateInp}
-            onChange={(e) => setStateInp(e.target.value)}
+            value={cityInp}
             sx={{
               height: '57px',
               marginRight: 1,
               width: '100%',
             }}
           >
-            {stateList.map((state) => (
-              <MenuItem key={state.code} value={state.code}>
+            {cities.map((city) => (
+              <MenuItem key={city} value={city}>
                 <Box
                   sx={{
                     display: 'flex',
@@ -132,9 +105,7 @@ export default function GetCities() {
                     textOverflow: 'initial',
                   }}
                 >
-                  <div width="30px">
-                    {state.code} - {state.name}
-                  </div>
+                  <div width="30px">{city}</div>
                 </Box>
               </MenuItem>
             ))}
